@@ -9,6 +9,10 @@ require("requires/connect.php");
 
 ?>
 
+<body>
+    <?php require("requires/navbar.php") // insert navbar ?>
+</body>
+
 <div class="container">
 
     <?php
