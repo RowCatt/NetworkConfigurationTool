@@ -6,7 +6,10 @@ require("requires/header.php");
 
 ?>
 
-<?php // body ?>
+<?php // body 
+
+echo "<p>body</p>";
+?>
 
 <?php
 // Include footer
