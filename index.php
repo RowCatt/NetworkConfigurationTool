@@ -6,7 +6,7 @@ require("requires/header.php");
 
 ?>
 
-    <a style="margin: 2px; margin-left: 8px;" class="btn btn-primary" href="devices.php"> Devices </a>
+    <a style="margin: 5px; margin-left: 10px;" class="btn btn-primary" href="devices.php"> Devices </a>
 
 <?php
 // Include footer

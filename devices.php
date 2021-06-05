@@ -13,6 +13,9 @@ require("requires/connect.php");
 
     <?php
 
+    // Add Device Page link
+    echo "<a style='margin: 5px; margin-left: 10px;' class='btn btn-primary' href='add_device.php'> Add Device </a>";
+
     // List devices in the devices table
     $query = "SELECT * FROM `devices`";
     $query = mysqli_query($connect,$query);
