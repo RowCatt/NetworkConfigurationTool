@@ -5,3 +5,10 @@ $page_name = "Index"; // Set page name
 require("requires/header.php");
 
 ?>
+
+<?php // body ?>
+
+<?php
+// Include footer
+require("requires/footer.php");
+?>
