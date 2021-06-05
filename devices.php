@@ -31,7 +31,7 @@ require("requires/connect.php");
             $model = $currentDevice["model"];
             // Get model from the models table
             $query_model = "SELECT * FROM `models` WHERE `id`=`$model`";
-            $query_model = mysqli_query($connect,$query_model)
+            $query_model = mysqli_query($connect,$query_model);
             $model = $query_model["name"];
 
             echo "<p> $ip_address - $model</p>";
