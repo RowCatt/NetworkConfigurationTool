@@ -2,8 +2,8 @@
 
 $connect = mysqli_connect(
     "localhost", // DB Host
-    "php", // Username
-    "%pa55w0rd", // Placeholder Password
+    "phproot", // Username
+    "phproot", // Placeholder Password
     "NetworkConfigurationTool" // DB Name
     ) or die("Unable to connect to the database");
 
