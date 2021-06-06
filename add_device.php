@@ -13,11 +13,7 @@ require("requires/connect.php");
 
     <div class="container">
 
-        <?php
-
-        require("requires/navbar.php") // insert navbar
-
-        ?>
+        <?php require("requires/navbar.php"); // insert navbar ?>
 
         <div class='container'>
 
