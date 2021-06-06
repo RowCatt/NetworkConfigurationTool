@@ -17,7 +17,7 @@ localdb = mysql.connector.connect( # Connect to the local database
     user="phproot",
     passwd="phproot",
     db="NetworkConfigurationTool",
-    auth_plugin='mysql_native_password'
+    auth_plugin='mysql_native_password' # Needed for mysql authentication
 )
 localdb_cursor = localdb.cursor() # Used to interact with the DB
 
