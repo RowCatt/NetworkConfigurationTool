@@ -29,6 +29,7 @@ exec("python3 /var/www/html/NetworkConfigurationTool/process/python/addDevice.py
 $code = $output[0];
 $message = $output[1];
 echo "Code: $code";
+echo "<br>";
 echo "Message: $message";
 
 ?>
