@@ -27,10 +27,19 @@ username = sys.argv[2]
 password = sys.argv[3]
 model = sys.argv[4]
 
-print(f"""
-Entered Data:
-IP:       {ip}
-Username: {username}
-Password: {password}
-Model:    {model}
-""")
+# print(f"""
+# Entered Data:
+# IP:       {ip}
+# Username: {username}
+# Password: {password}
+# Model:    {model}
+# """)
+
+# Find model os_type
+localdb_fetch = f"SELECT * FROM `models` WHERE `name`='{model}' LIMIT 1"
+localdb_cursor.execute(localdb_fetch)
+localdb_data = localdb_cursor.fetchall()
+if not localdb_data: # If the model is in the DB
+    print("not in the db")
+else:
+    print("in the db")
