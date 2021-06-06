@@ -40,6 +40,10 @@ localdb_fetch = f"SELECT * FROM `models` WHERE `name`='{model}' LIMIT 1"
 localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
 if not localdb_data: # If the model is in the DB
-    print("not in the db")
+    print("""Error
+    Model not in database.
+    """)
 else:
-    print("in the db")
+    print("""Error
+    Model not in database.
+    """)
