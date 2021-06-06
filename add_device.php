@@ -1,6 +1,6 @@
 <?php
 
-$page_name = "Devices"; // Set page name
+$page_name = "Add Device"; // Set page name
 // Insert header
 require("requires/header.php");
 
