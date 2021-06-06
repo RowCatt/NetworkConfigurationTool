@@ -55,4 +55,15 @@ if os_type != "IOS":
     """)
     sys.exit()
 
-print("end")
+# Attempt connection using Netmiko
+# Create device connection object
+device = {
+    'device_type':  'cisco_ios',
+    'host':          ip,
+    'username':      username,
+    'password':      password,
+    'port' :         22,
+    'secret':        password,
+}
+connect = ConnectHandler(**device) # Connect to device
+# connect.enable() # Jump to enable mode
