@@ -10,7 +10,7 @@ if(isset($_POST["ip"]) && $_POST["ip"] != "" && isset($_POST["username"]) && $_P
     $password = $_POST["password"];
     $model = $_POST["model"];
 }else{
-    header("Location: ../add_device.php?error=Fields left empty");
+    header("Location: ../add_device.php?error=Fields left empty.");
     exit;
 }
 
@@ -18,11 +18,12 @@ if(isset($_POST["ip"]) && $_POST["ip"] != "" && isset($_POST["username"]) && $_P
 
 // Check if IP is an IP
 if(!filter_var($ip, FILTER_VALIDATE_IP)){
-    echo "not ip";
-}else{
-    echo "is ip";
+    header("Location: ../add_device.php?error=Entered IP Address is not valid.");
+    exit;
 }
 
-// echo "$ip | $username | $password | $model";
+// Send this data to python to add the device
+exec("python3 /var/www/html/NetworkManagementTool/process/python/addDevice.py $ip $username $password $model", $output);
+print_r($output);
 
 ?>
