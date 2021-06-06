@@ -18,8 +18,8 @@ require("requires/connect.php");
         require("requires/navbar.php"); // insert navbar
 
         // Add Device Page link
-        echo "<a style='margin: 15px;' class='btn btn-info' href='add_device.php'> Add New Device </a>";
-        echo "<a style='margin: 15px;' class='btn btn-info' href='global_config.php'> Edit Global Configuration </a>";
+        echo "<a style='margin: 15px;' class='btn btn-primary' href='add_device.php'> Add New Device </a>";
+        echo "<a style='margin: 15px;' class='btn btn-primary' href='global_config.php'> Edit Global Configuration </a>";
 
         // Get devices in the devices table
         $query = "SELECT * FROM `devices`";
@@ -73,10 +73,10 @@ require("requires/connect.php");
                                 echo "<td> $last_online </td>";
                                 echo "<td>";
                                     if($online == 0){
-                                        echo "<a style='margin: 15px;' class='btn btn-info' href='remove_device.php?id=$id'> Remove Device </a>";
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='remove_device.php?id=$id'> Remove Device </a>";
                                     }else{
-                                        echo "<a style='margin: 15px;' class='btn btn-info' href='edit_device_config.php?id=$id'> Edit Configuration </a>";
-                                        echo "<a style='margin: 15px;' class='btn btn-info' href='remove_device.php?id=$id'> Remove Device </a>";
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a>";
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='remove_device.php?id=$id'> Remove Device </a>";
                                     }
                                 echo "</td>";
                             echo "</tr>";

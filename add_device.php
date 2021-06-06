@@ -21,32 +21,40 @@ require("requires/connect.php");
 
             <form action='process/addDeviceProcess.php' method='post'>
 
-                <label for="ip">IP Address</label>
-                <input type="text" name="ip" id="ip">
+                <div class="form-group">
+                    <label for="ip">IP Address</label>
+                    <input type="text" class="form-control" name="ip" id="ip">
+                </div>
 
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username">
+                </div>
 
-                <label for="password">Password</label>
-                <input type="text" name="password" id="password">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" name="password" id="password">
+                </div>
 
-                <label for="model">Model</label>
-                <select name="model" id="model">
-                    <?php
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <select class="form-control" name="model" id="model">
+                        <?php
 
-                    // Get all models from DB
-                    $query = "SELECT * FROM `models`";
-                    $query = mysqli_query($connect,$query);
-                    while($model = mysqli_fetch_assoc($query))
-                    {
-                        $model = $model["name"];
-                        echo "<option value='$model'>$model</option>";
-                    }
+                        // Get all models from DB
+                        $query = "SELECT * FROM `models`";
+                        $query = mysqli_query($connect,$query);
+                        while($model = mysqli_fetch_assoc($query))
+                        {
+                            $model = $model["name"];
+                            echo "<option value='$model'>$model</option>";
+                        }
 
-                    ?>
-                </select>
+                        ?>
+                    </select>
+                </div>
 
-                <input type="submit" value="Save">
+                <button type="submit" class="btn btn-primary">Add Device</button>
 
             </form>
 
