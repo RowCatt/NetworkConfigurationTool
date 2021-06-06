@@ -43,7 +43,16 @@ if not localdb_data: # If the model is in the DB
     print("""Error
     Model not in database.
     """)
+    sys.exit()
 
 for data in localdb_data:
     os_type = data[2]
-    print(os_type)
+    # print(os_type)
+
+if os_type != "IOS":
+    print("""Error
+    Device Operating System not supported
+    """)
+    sys.exit()
+
+print("end")
