@@ -45,5 +45,5 @@ if not localdb_data: # If the model is in the DB
     """)
 
 for data in localdb_data:
-    os_type = data[3]
+    os_type = data[2]
     print(os_type)
