@@ -16,6 +16,13 @@ if(isset($_POST["ip"]) && $_POST["ip"] != "" && isset($_POST["username"]) && $_P
 
 // Check each field to see if it's legitimate
 
-echo "$ip | $username | $password | $model";
+// Check if IP is an IP
+if(!filter_var($ip, FILTER_VALIDATE_IP)){
+    echo "not ip";
+}else[
+    echo "is ip";
+]
+
+// echo "$ip | $username | $password | $model";
 
 ?>
