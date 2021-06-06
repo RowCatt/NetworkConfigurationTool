@@ -14,5 +14,8 @@ if(isset($_POST["ip"]) && $_POST["ip"] != "" && isset($_POST["username"]) && $_P
     exit;
 }
 
+// Check each field to see if it's legitimate
+
+echo "$ip | $username | $password | $model";
 
 ?>
