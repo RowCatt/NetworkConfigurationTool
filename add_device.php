@@ -50,6 +50,17 @@ require("requires/connect.php");
 
             </form>
 
+            <?php
+
+            // Check to see if there's an error sent by the processing page
+
+            if(isset($_GET["error"]) && $_GET["error"] != ""){
+                $error = $_GET["error"];
+                echo "<p style='color: red'> $error </p>";
+            }
+
+            ?>
+
         </div>
 
     </div>
