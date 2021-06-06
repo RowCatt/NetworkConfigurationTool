@@ -70,7 +70,11 @@ require("requires/connect.php");
                                 echo "<td> $ip_address </td>";
                                 echo "<td> $model </td>";
                                 echo "<td> $last_online </td>";
-                                echo "<td> <a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a> </td>";
+                                if($online == 0){
+                                    echo "<td>  </td>";
+                                }else{
+                                    echo "<td> <a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a> </td>";
+                                }
                             echo "</tr>";
                             
                         }
