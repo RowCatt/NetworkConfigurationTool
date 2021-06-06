@@ -39,8 +39,10 @@ require("requires/connect.php");
                 // Get model from the models table
                 $query_model = "SELECT * FROM `models` WHERE `id`='$model'";
                 $query_model = mysqli_query($connect,$query_model);
-                $model = $query_model["name"];
-
+                while($fetched_model = mysqli_fetch_assoc($query_model)){
+                    $model = $fetched_model["name"];
+                }
+                
                 echo "<p> $ip_address - $model</p>";
             }
         }
