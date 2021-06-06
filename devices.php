@@ -54,9 +54,9 @@ require("requires/connect.php");
 
                             $online = $currentDevice["online"];
                             if($online == 0){ 
-                                $online = "red"; 
+                                $online = "255, 99, 71"; 
                             }else{
-                                $online = "green";
+                                $online = "186, 209, 85";
                             }
 
                             // Get model from the models table
@@ -66,7 +66,7 @@ require("requires/connect.php");
                                 $model = $fetched_model["name"];
                             }
 
-                            echo "<tr style='background-color: $online;'>";
+                            echo "<tr style='background-color: rgba($online, 0.5);'>";
                                 echo "<td> $ip_address </td>";
                                 echo "<td> $model </td>";
                                 echo "<td> $last_online </td>";
