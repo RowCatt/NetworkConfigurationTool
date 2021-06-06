@@ -17,9 +17,9 @@ require("requires/connect.php");
 
         <div class='container'>
 
-            <h3> Add Device </h3>
-
             <form action='process/addDeviceProcess.php' method='post' style='width: 30%; margin: 20px;'>
+
+                <h3> Add Device </h3>
 
                 <div class="form-group">
                     <label for="ip">IP Address</label>
