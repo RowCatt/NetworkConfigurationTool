@@ -19,6 +19,7 @@ require("requires/connect.php");
 
         // Add Device Page link
         echo "<a style='margin: 15px;' class='btn btn-primary' href='add_device.php'> Add New Device </a>";
+        echo "<a style='margin: 15px;' class='btn btn-primary' href='global_config.php'> Edit Global Configuration </a>";
 
         // Get devices in the devices table
         $query = "SELECT * FROM `devices`";
