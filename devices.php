@@ -37,6 +37,7 @@ require("requires/connect.php");
                     echo "<tr>";
                         echo "<th scope='col'> IP Address </th>";
                         echo "<th scope='col'> Model </th>";
+                        echo "<th scope='col'> Last Online </th>";
                         echo "<th scope='col'> Action </th>";
                     echo "</tr>";
                 echo "</thead>";
@@ -48,6 +49,16 @@ require("requires/connect.php");
                             $id = $currentDevice["id"];
                             $ip_address = $currentDevice["ip_address"];
                             $model = $currentDevice["model"];
+                            $last_online = $currentDevice["last_online"];
+                            if($last_online == ""){ $last_online = "Never"; }
+
+                            $online = $currentDevice["online"];
+                            if($online == 0){ 
+                                $online = "red"; 
+                            }else{
+                                $online = "green";
+                            }
+
                             // Get model from the models table
                             $query_model = "SELECT * FROM `models` WHERE `id`='$model'";
                             $query_model = mysqli_query($connect,$query_model);
@@ -55,9 +66,10 @@ require("requires/connect.php");
                                 $model = $fetched_model["name"];
                             }
 
-                            echo "<tr>";
+                            echo "<tr style='color: $online;'>";
                                 echo "<td> $ip_address </td>";
                                 echo "<td> $model </td>";
+                                echo "<td> $last_online </td>";
                                 echo "<td> <a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a> </td>";
                             echo "</tr>";
                             
