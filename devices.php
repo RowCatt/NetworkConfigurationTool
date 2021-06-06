@@ -70,11 +70,14 @@ require("requires/connect.php");
                                 echo "<td> $ip_address </td>";
                                 echo "<td> $model </td>";
                                 echo "<td> $last_online </td>";
-                                if($online == 0){
-                                    echo "<td>  </td>";
-                                }else{
-                                    echo "<td> <a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a> </td>";
-                                }
+                                echo "<td>";
+                                    if($online == 0){
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='remove_device.php?id=$id'> Remove Device </a>";
+                                    }else{
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a>";
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='remove_device.php?id=$id'> Remove Device </a>";
+                                    }
+                                echo "</td>";
                             echo "</tr>";
                             
                         }
