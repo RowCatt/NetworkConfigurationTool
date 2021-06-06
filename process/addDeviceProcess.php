@@ -19,9 +19,9 @@ if(isset($_POST["ip"]) && $_POST["ip"] != "" && isset($_POST["username"]) && $_P
 // Check if IP is an IP
 if(!filter_var($ip, FILTER_VALIDATE_IP)){
     echo "not ip";
-}else[
+}else{
     echo "is ip";
-]
+}
 
 // echo "$ip | $username | $password | $model";
 
