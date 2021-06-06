@@ -66,7 +66,7 @@ require("requires/connect.php");
                                 $model = $fetched_model["name"];
                             }
 
-                            echo "<tr style='color: $online;'>";
+                            echo "<tr style='background-color: $online;'>";
                                 echo "<td> $ip_address </td>";
                                 echo "<td> $model </td>";
                                 echo "<td> $last_online </td>";
