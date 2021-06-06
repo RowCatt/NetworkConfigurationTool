@@ -22,16 +22,16 @@ require("requires/connect.php");
             <form action='process/addDeviceProcess.php' method='post'>
 
                 <label for="ip">IP Address</label>
-                <input type="text" name="ip">
+                <input type="text" name="ip" id="ip">
 
                 <label for="username">Username</label>
-                <input type="text" name="username">
+                <input type="text" name="username" id="username">
 
                 <label for="password">Password</label>
-                <input type="text" name="password">
+                <input type="text" name="password" id="password">
 
                 <label for="model">Model</label>
-                <select name="model">
+                <select name="model" id="model">
                     <?php
 
                     // Get all models from DB
