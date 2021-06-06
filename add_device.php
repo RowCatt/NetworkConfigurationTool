@@ -55,7 +55,7 @@ require("requires/connect.php");
                 </div>
 
                 <button type="submit" class="btn btn-primary">Add Device</button>
-                <a style='margin-left: 15px;' class='btn btn-danger' href='devices'> Cancel </a>
+                <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>
 
             </form>
 
