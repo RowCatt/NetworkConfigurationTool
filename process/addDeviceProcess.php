@@ -24,7 +24,7 @@ if(!filter_var($ip, FILTER_VALIDATE_IP)){
 
 // Send this data to python to add the device
 exec("python3 /var/www/html/NetworkConfigurationTool/process/python/addDevice.py '$ip' '$username' '$password' '$model'", $output);
-// print_r($output);
-var_dump($output);
+print_r($output);
+// var_dump($output);
 
 ?>
