@@ -43,7 +43,7 @@ if not localdb_data: # If the model is in the DB
     print("""Error
     Model not in database.
     """)
-else:
-    print("""Error
-    Model not in database.
-    """)
+
+for data in localdb_data:
+    os_type = data[3]
+    print(os_type)
