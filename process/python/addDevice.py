@@ -70,4 +70,6 @@ try:
     connect = ConnectHandler(**device) # Connect to device
 except Exception as error:
     print(f"Error: {error}")
+
+print("END")
 # connect.enable() # Jump to enable mode
