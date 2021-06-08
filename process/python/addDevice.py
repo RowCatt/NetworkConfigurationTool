@@ -152,6 +152,9 @@ print (f"""
 hostname = running_config.split("hostname ", 1)
 # hostname[0] is before the hostname and hostname[1] is the hostname and everything after
 # print(f"Hostname0: {hostname[0]}")
-print(f"Hostname1: {hostname[1]}")
+# print(f"Hostname1: {hostname[1]}")
+# partition
+hostname = hostname[1].partition(" ")[0]
+print (f"Hostname is: {hostname} .")
 
 print("END")
