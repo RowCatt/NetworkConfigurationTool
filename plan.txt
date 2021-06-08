@@ -1,0 +1,66 @@
+5.2 Network Infrastructure Management and Inventory System
+5.2.1 Creating database tables
+[x]	Show tables being created (do devices table at end as I know I’ll forget to add some fields)
+[x]	Show sample data in Models table
+5.2.2 Add device form
+[x]	Show web GUI with sample data
+[x]	Show PHP code for creating the form
+[]	Show PHP code for error checking
+[]	Show PHP code for sending to Python
+5.2.3 Device connection
+[]	Python accepting PHP code and using Netmiko to attempt a connection
+[]	Exception if connection fails
+[]	Successful connection
+5.2.4 Configuration download and analysis
+[]	Download running config from device
+[]	Extracting key data
+[]	Creating an entry in the Devices table and inserting the config
+[]	Insert full config backup into ‘Configuration’ table
+[]	Show web GUI with device details
+5.2.5 Periodic device connection testing
+[]	Create a python script to periodically use Netmiko to attempt to connect to devices in the ‘Devices’ table
+[]	If a connection fails: add an error flag to the db. if succeeds: remove flag
+[]	Add this to crontab to run every minute
+[]	Error flag shown in web GUI
+
+5.3 Automated Device Configuration
+5.3.1 Web form creation
+[]	Create ‘Global configuration’ web form
+[]	Error checking using PHP
+[]	Prompt user to re-enter details if there is an error
+5.3.2 Database interaction
+[]	Create a ‘Global config’ DB table
+[]	Insert error checked config with PHP
+[]	Add flag to ‘Devices’ table to enable global config applying
+5.3.3 Integration with periodic device connection script
+[]	Add to python cron task – if flagged in devices table
+[]	If current config is different, create backup of config
+[]	Apply global config
+
+5.4 Network Configuration Management
+5.4.1 Dynamic Edit Configuration page creation
+[]	Add a dynamic edit config page for each device
+[]	Populate page with config stored in the db
+[]	Add checkbox for allowing automated / global config
+[]	If checked (default), global config flag is applied to device
+[]	If unchecked, unlocks fields using under global conf for user to enter details
+5.4.2 Applying configuration to devices
+[]	PHP sends config to Python
+[]	Python connects to device using Netmiko
+[]	If config has changed (new conf vs conf in devices table):
+[]	Take a backup of the current config
+[]	Apply the new config
+[]	Else: Don’t apply the config – nothing to change
+5.4.3 Rolling back to previous configuration
+[]	Show all configuration backups for a device in the edit config page
+[]	A user can select a config to roll back to
+[]	Show PHP and python/Netmiko applying this config
+
+5.5 VLAN Management
+[]	Add VLAN Management page attached to Global conf page
+[]	Allow users to add/remove VLANs from the list
+[]	Users can edit the names of VLANs
+[]	Can set native vlan
+[]	Create ‘vlan’ table in database
+[]	Once saved: drop and repopulate vlan table
+[]	Add to the periodic device connection, replace the VLANs if global conf enabled

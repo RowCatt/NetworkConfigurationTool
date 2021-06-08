@@ -11,6 +11,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="devices.php"> Devices </a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="global_config.php"> Global Configuration </a>
+                </li>
             </ul>
         </div>
     </nav>
