@@ -160,7 +160,7 @@ domain_name = running_config
 # Grabbing domain-name
 domain_name = domain_name.split("domain-name  ", 1)
 # Remove everything after the domain-name line
-domain_name = domain_name[1].split("\n")[0]
+# domain_name = domain_name[1].split("\n")[0]
 print(f"Domain Name: {domain_name} .")
 
 print("END")
