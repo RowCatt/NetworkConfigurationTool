@@ -143,6 +143,13 @@ end
 
 # We already have username and password from adding the device
 # Hostname and Domain-name are needed so they will be extracted from the config
-print (running_config)
+print (f"""
+=========================================
+{running_config}
+=========================================
+""")
+
+hostname = running_config.split("hostname ", 1)
+print(f"Hostname: {hostname}")
 
 print("END")
