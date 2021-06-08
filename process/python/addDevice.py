@@ -65,6 +65,9 @@ device = {
     'port' :         22,
     'secret':        password,
 }
-connect = ConnectHandler(**device) # Connect to device
-print(connect)
+
+try:
+    connect = ConnectHandler(**device) # Connect to device
+except Exception as error:
+    print(f"Error: {error}")
 # connect.enable() # Jump to enable mode
