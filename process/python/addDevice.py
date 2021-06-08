@@ -170,9 +170,10 @@ print(f"Domain Name: {domain_name} .")
 #         VALUES ('{ipAddress}', '{macAddress}', '{vendor}', '{os}', '{os_type}', '{os_family}', '{os_gen}', '{ssh}', '{http}', '{hostname}', 'Yes', '{datetime.datetime.now()}')"""
 #         localdb_cursor.execute(localdb_insert)
 #         localdb.commit()
+time = datetime.now()
 localdb_insert = f"""INSERT INTO devices
 (model, last_online, ip_address, username, password, use_global_conf, hostname, domain_name)
-VALUES ('{model_id}', '{datetime.datetime.now()}', '{ip}', '{username}', '{password}', '0', '{hostname}', '{domain_name}')"""
+VALUES ('{model_id}', '{time}', '{ip}', '{username}', '{password}', '0', '{hostname}', '{domain_name}')"""
 localdb_cursor.execute(localdb_insert)
 localdb.commit()
 print("Device entered into database")

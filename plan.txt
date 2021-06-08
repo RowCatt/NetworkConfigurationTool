@@ -14,7 +14,7 @@
 5.2.4 Configuration download and analysis
 [x]	Download running config from device
 [x]	Extracting key data
-[]	Creating an entry in the Devices table and inserting the config
+[x]	Creating an entry in the Devices table and inserting the config
 []	Insert full config backup into ‘Configuration’ table
 []	Show web GUI with device details
 5.2.5 Periodic device connection testing
