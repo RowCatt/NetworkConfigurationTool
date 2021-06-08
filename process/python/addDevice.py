@@ -148,16 +148,17 @@ print (f"""
 {running_config}
 =========================================
 """)
-
+hostname = running_config
 # Grab hostname
 # Get everything after hostname:
-hostname = running_config.split("hostname ", 1)
+hostname = hostname.split("hostname ", 1)
 # Remove everything after the hostname line
 hostname = hostname[1].split("\n")[0]
 print(f"Hostname: {hostname} .")
 
+domain_name = running_config
 # Grabbing domain-name
-domain_name = running_config.split("domain-name  ", 1)
+domain_name = domain_name.split("domain-name  ", 1)
 # Remove everything after the domain-name line
 domain_name = domain_name[1].split("\n")[0]
 print(f"Domain Name: {domain_name} .")
