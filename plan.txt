@@ -5,8 +5,8 @@
 5.2.2 Add device form
 [x]	Show web GUI with sample data
 [x]	Show PHP code for creating the form
-[]	Show PHP code for error checking
-[]	Show PHP code for sending to Python
+[x]	Show PHP code for error checking
+[x]	Show PHP code for sending to Python
 5.2.3 Device connection
 []	Python accepting PHP code and using Netmiko to attempt a connection
 []	Exception if connection fails

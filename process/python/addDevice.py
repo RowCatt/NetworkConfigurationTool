@@ -66,4 +66,5 @@ device = {
     'secret':        password,
 }
 connect = ConnectHandler(**device) # Connect to device
+print(connect)
 # connect.enable() # Jump to enable mode
