@@ -66,17 +66,18 @@ device = {
     'secret':        password,
 }
 
-try:
-    connect = ConnectHandler(**device) # Connect to device
-except Exception as error: # If there's an error (device not reachable, wrong credentials)
-    print(f"""ERROR
-    CONNECTION FAILED: {error}
-    """)
-    sys.exit()
+# RE-ADD LATER. REMOVED FOR TESTING
+# try:
+#     connect = ConnectHandler(**device) # Connect to device
+# except Exception as error: # If there's an error (device not reachable, wrong credentials)
+#     print(f"""ERROR
+#     CONNECTION FAILED: {error}
+#     """)
+#     sys.exit()
 
-# If device is logged into:
-connect.enable() # Jump to enable mode
-running_config = connect.send_command('show run') # Show running configuration
+# # If device is logged into:
+# connect.enable() # Jump to enable mode
+# running_config = connect.send_command('show run') # Show running configuration
 
 # This should output something like:
 #=====================================================
