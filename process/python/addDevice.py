@@ -181,11 +181,10 @@ print("Device entered into database")
 # Save the config to the configurations table
 # Get the ID of the device just inserted
 
-localdb_fetch = f"SELECT * FROM `devices` WHERE `ip_address`='{ip}' AND `last_online`='{time}' LIMIT 1"
+localdb_fetch = f"SELECT * FROM `devices` WHERE `ip_address`='{ip}' LIMIT 1"
 localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
 for device in localdb_data:
     device_id = device[0]
-    print(f"dev is: {device}")
 
 print(f"Device ID is: {device_id}")
