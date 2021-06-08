@@ -186,6 +186,6 @@ localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
 for device in localdb_data:
     device_id = device[0]
-    print(device)
+    print(f"dev is: {device}")
 
 print(f"Device ID is: {device_id}")
