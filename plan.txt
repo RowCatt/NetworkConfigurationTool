@@ -8,11 +8,11 @@
 [x]	Show PHP code for error checking
 [x]	Show PHP code for sending to Python
 5.2.3 Device connection
-[]	Python accepting PHP code and using Netmiko to attempt a connection
-[]	Exception if connection fails
-[]	Successful connection
+[x]	Python accepting PHP code and using Netmiko to attempt a connection
+[x]	Exception if connection fails
+[x]	Successful connection
 5.2.4 Configuration download and analysis
-[]	Download running config from device
+[x]	Download running config from device
 []	Extracting key data
 []	Creating an entry in the Devices table and inserting the config
 []	Insert full config backup into ‘Configuration’ table

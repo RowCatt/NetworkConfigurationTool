@@ -40,7 +40,7 @@ localdb_fetch = f"SELECT * FROM `models` WHERE `name`='{model}' LIMIT 1"
 localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
 if not localdb_data: # If the model is in the DB
-    print("""Error
+    print("""ERROR
     Model not in database.
     """)
     sys.exit()
@@ -50,7 +50,7 @@ for data in localdb_data:
     # print(os_type)
 
 if os_type != "IOS":
-    print("""Error
+    print("""ERROR
     Device Operating System not supported
     """)
     sys.exit()
@@ -68,8 +68,15 @@ device = {
 
 try:
     connect = ConnectHandler(**device) # Connect to device
-except Exception as error:
-    print(f"Error: {error}")
+except Exception as error: # If there's an error (device not reachable, wrong credentials)
+    print(f"""ERROR
+    CONNECTION FAILED: {error}
+    """)
+    sys.exit()
+
+# If device is logged into:
+connect.enable() # Jump to enable mode
+running_config = connect.send_command('show run') # Show running configuration
+
 
 print("END")
-# connect.enable() # Jump to enable mode
