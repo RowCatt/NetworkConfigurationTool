@@ -46,10 +46,11 @@ if not localdb_data: # If the model is in the DB
     sys.exit()
 
 for data in localdb_data:
-    os_type = data[2]
-    # print(os_type)
+    model_id = data[0]
+    model_os_type = data[2]
+    # print(model_os_type)
 
-if os_type != "IOS":
+if model_os_type != "IOS":
     print("""ERROR
     Device Operating System not supported
     """)
@@ -162,5 +163,18 @@ domain_name = domain_name.split("domain-name ", 1)
 # Remove everything after the domain-name line
 domain_name = domain_name[1].split("\n")[0]
 print(f"Domain Name: {domain_name} .")
+
+# Insert device into the database using the info collected
+# localdb_insert = f"""INSERT INTO devices 
+#         (ip_address, mac_address, vendor, os, os_type, os_family, os_gen, ssh, http, hostname, online, last_pinged) 
+#         VALUES ('{ipAddress}', '{macAddress}', '{vendor}', '{os}', '{os_type}', '{os_family}', '{os_gen}', '{ssh}', '{http}', '{hostname}', 'Yes', '{datetime.datetime.now()}')"""
+#         localdb_cursor.execute(localdb_insert)
+#         localdb.commit()
+localdb_insert = f"""INSERT INTO devices
+(model, last_online, ip_address, username, password, use_global_conf, hostname, domain_name)
+VALUES ('{model_id}', '{datetime.datetime.now()}', '{ip}', '{username}', '{password}', '0', '{hostname}', '{domain_name}')"""
+localdb_cursor.execute(localdb_insert)
+localdb.commit()
+print("Device entered into database")
 
 print("END")
