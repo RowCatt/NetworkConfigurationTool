@@ -154,7 +154,11 @@ hostname = running_config.split("hostname ", 1)
 # print(f"Hostname0: {hostname[0]}")
 # print(f"Hostname1: {hostname[1]}")
 # partition
-hostname = hostname[1].partition(" ")[0]
-print (f"Hostname is: {hostname} .")
+# hostname = hostname[1].partition(" ")[0]
+# print (f"Hostname is: {hostname} .")
+# split new lines
+hostname = hostname[1].split("\n")[0]
+print(hostname)
+
 
 print("END")
