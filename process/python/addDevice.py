@@ -158,7 +158,7 @@ hostname = running_config.split("hostname ", 1)
 # print (f"Hostname is: {hostname} .")
 # split new lines
 hostname = hostname[1].split("\n")[0]
-print(hostname)
+print(f"Hostname: {hostname} .")
 
 
 print("END")
