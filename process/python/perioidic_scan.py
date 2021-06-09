@@ -29,11 +29,11 @@ localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
 
 for device in localdb_data:
-    device_id = data[0]
-    device_ip_address = data[4]
-    device_username = data[5]
-    device_password = data[6]
-    device_use_global_conf = data[7]
+    device_id = device[0]
+    device_ip_address = device[4]
+    device_username = device[5]
+    device_password = device[6]
+    device_use_global_conf = device[7]
 
     # Connect to deivce
     netmiko_connect = {
