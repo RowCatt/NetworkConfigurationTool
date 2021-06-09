@@ -15,7 +15,7 @@
 [x]	Download running config from device
 [x]	Extracting key data
 [x]	Creating an entry in the Devices table and inserting the config
-[]	Insert full config backup into ‘Configuration’ table
+[x]	Insert full config backup into ‘Configuration’ table
 []	Show web GUI with device details
 5.2.5 Periodic device connection testing
 []	Create a python script to periodically use Netmiko to attempt to connect to devices in the ‘Devices’ table
