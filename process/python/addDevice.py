@@ -176,9 +176,9 @@ localdb_insert = f"""INSERT INTO devices
 VALUES ('{model_id}', '{time}', '1', '{ip}', '{username}', '{password}', '0', '{hostname}', '{domain_name}')"""
 localdb_cursor.execute(localdb_insert)
 localdb.commit()
-print("Device entered into database")
+# print("Device entered into database")
 
-print("SAVING CONFIG ============================")
+# print("SAVING CONFIG ============================")
 # Save the config to the configurations table
 # Get the ID of the device just inserted
 
@@ -188,7 +188,7 @@ localdb_data = localdb_cursor.fetchall()
 for device in localdb_data:
     device_id = device[0]
 
-print(f"Device ID is: {device_id}")
+# print(f"Device ID is: {device_id}")
 
 localdb_insert = f"""INSERT INTO configurations
 (device_id, time_saved, configuration)
@@ -196,4 +196,4 @@ VALUES ('{device_id}', '{time}', '{running_config}')"""
 localdb_cursor.execute(localdb_insert)
 localdb.commit()
 
-print("-= END =-")
+# print("-= END =-")
