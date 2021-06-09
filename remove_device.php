@@ -22,7 +22,7 @@ $device_id = $_GET["id"];
             <form action='process/removeDeviceProcess.php' method='post' style='width: 30%; margin: 20px;'>
 
                 <h3> Are you sure you want to remove this device? </h3>
-                <p>Note: This will remove all saved configurations associated with the device. Please back these up before deleting if you wish to keep them.</p>
+                <p>Note: This will remove all saved configurations associated with the device. Please back these up before removing if you wish to keep them.</p>
 
                 <?php echo"<input type='hidden' name='device_id' id='device_id' value='$device_id'>"; ?>
 
