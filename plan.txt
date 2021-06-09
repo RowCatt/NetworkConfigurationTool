@@ -21,7 +21,7 @@
 [x]	Create a python script to periodically use Netmiko to attempt to connect to devices in the ‘Devices’ table
 [x]	If a connection fails: add an error flag to the db. if succeeds: remove flag
 []	Add this to crontab to run every minute
-[]	Error flag shown in web GUI
+[x]	Error flag shown in web GUI
 
 5.3 Automated Device Configuration
 5.3.1 Web form creation
