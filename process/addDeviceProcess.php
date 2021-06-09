@@ -22,6 +22,14 @@ if(!filter_var($ip, FILTER_VALIDATE_IP)){
     exit;
 }
 
+// Check if a device with this IP is already in the database, if so, send back to add device page
+$query = "SELECT * FROM devices WHERE ip_address='$ip'";
+$query = mysqli_query($connect,$query);
+if(mysqli_num_rows($query) > 0){
+    header("Location: ../add_device.php?error=Device already in the Database.");
+    exit;
+}
+
 // Send this data to python to add the device
 exec("python3 /var/www/html/NetworkConfigurationTool/process/python/addDevice.py '$ip' '$username' '$password' '$model'", $output);
 // print_r($output);
