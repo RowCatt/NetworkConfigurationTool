@@ -47,16 +47,16 @@ for device in localdb_data:
 
     print(f"Attempting connection to {device_ip_address}")
 
-    try:
-        connect = ConnectHandler(**device) # Connect to device
-        print("Connection successful")
-    except Exception as error:
-        # Connection failed, set the device to offline
-        print("Connection failed")
-        localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
-        localdb_cursor.execute(localdb_update)
-        localdb.commit()
-        continue
+    # try:
+    #     connect = ConnectHandler(**device) # Connect to device
+    #     print("Connection successful")
+    # except Exception as error:
+    #     # Connection failed, set the device to offline
+    #     print("Connection failed")
+    #     localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
+    #     localdb_cursor.execute(localdb_update)
+    #     localdb.commit()
+    #     continue
 
     # Set oneline=1 and last_online=now
     print("Setting online and last_online")
