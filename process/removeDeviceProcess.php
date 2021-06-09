@@ -4,8 +4,8 @@ require("../requires/connect.php");
 
 // ERROR CHECKING
 
-if(isset($_POST["id"]) && $_POST["id"] != ""){
-    $device_id = $_POST["id"];
+if(isset($_POST["device_id"]) && $_POST["device_id"] != ""){
+    $device_id = $_POST["device_id"];
 }else{
     header("Location: ../devices.php");
     exit;
