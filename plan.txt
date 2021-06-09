@@ -25,7 +25,7 @@
 
 5.3 Automated Device Configuration
 5.3.1 Web form creation
-[]	Create ‘Global configuration’ web form
+[x]	Create ‘Global configuration’ web form
 []	Error checking using PHP
 []	Prompt user to re-enter details if there is an error
 5.3.2 Database interaction
