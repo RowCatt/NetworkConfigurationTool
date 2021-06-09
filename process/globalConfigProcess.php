@@ -20,7 +20,7 @@ if(!filter_var($domain_name, FILTER_VALIDATE_DOMAIN)){
 }
 
 // Update the global config table
-$query = "UPDATE global_configuration SET username='$username', password='$password', `domain-name`='$domain_name' WHERE id='1'";
+$query = "UPDATE `global_configuration` SET `username`='$username', `password`='$password', `domain_name`='$domain_name' WHERE id='1'";
 $query = mysqli_query($connect,$query);
 
 header("Location: ../global_config.php");
