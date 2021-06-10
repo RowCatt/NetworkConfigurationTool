@@ -29,9 +29,9 @@ localdb_fetch = f"SELECT * FROM `global_configuration`"
 localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
 for global_conf in localdb_data:
-    global_username = localdb_data[1]
-    global_password = localdb_data[2]
-    global_domain_name = localdb_data[3]
+    global_username = global_conf[1]
+    global_password = global_conf[2]
+    global_domain_name = global_conf[3]
 
 localdb_fetch = f"SELECT * FROM `devices`"
 localdb_cursor.execute(localdb_fetch)
