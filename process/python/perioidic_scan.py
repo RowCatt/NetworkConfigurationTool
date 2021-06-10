@@ -150,7 +150,7 @@ for device in localdb_data:
         print("Finding current password")
         current_password = running_config
         current_password = current_password.split("password ", 1)
-        current_password = current_password[1].split("0")[0]
+        current_password = current_password[1].split("\n")[0]
         print(current_password)
 
         print("Finding current domain-name")
