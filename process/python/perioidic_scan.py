@@ -24,6 +24,15 @@ localdb_cursor = localdb.cursor() # Used to interact with the DB
 # This script runs periodically to peform many functions
 # Use Netmiko to attempt connections to devices in the DB
 
+# Get global config first - optimisation to stop querying on every for loop
+localdb_fetch = f"SELECT * FROM `global_configuration`"
+localdb_cursor.execute(localdb_fetch)
+localdb_data = localdb_cursor.fetchall()
+for global_conf in localdb_data:
+    global_username = localdb_data[1]
+    global_password = localdb_data[2]
+    global_domain_name = localdb_data[3]
+
 localdb_fetch = f"SELECT * FROM `devices`"
 localdb_cursor.execute(localdb_fetch)
 localdb_data = localdb_cursor.fetchall()
@@ -65,6 +74,90 @@ for device in localdb_data:
     localdb_update = f"UPDATE devices SET online='1', last_online='{time}' WHERE id='{device_id}'"
     localdb_cursor.execute(localdb_update)
     localdb.commit()
+
+    # Checking if device has global config enabled
+    if device_use_global_conf == 1:
+        # It does - check if the current config is different
+        # connect.enable()
+        # running_config = connect.send_command('show run')
+
+        # Placeholder running conf
+        running_config = """
+        Building configuration...
+
+        Current configuration : 833 bytes
+        !
+        version 15.1
+        no service timestamps log datetime msec
+        no service timestamps debug datetime msec
+        no service password-encryption
+        !
+        hostname R1
+        !
+        enable password adminpassword
+        !
+        ip cef
+        no ipv6 cef
+        !
+        username admin password 0 adminpassword
+        !
+        license udi pid CISCO2901/K9 sn FTX1524ZQ02-
+        !
+        ip domain-name lab.local
+        !
+        spanning-tree mode pvst
+        !
+        interface GigabitEthernet0/0
+        ip address 10.0.3.1 255.255.255.0
+        duplex auto
+        speed auto
+        !
+        interface GigabitEthernet0/1
+        ip address 10.0.2.1 255.255.255.0
+        duplex auto
+        speed auto
+        !
+        interface Vlan1
+        no ip address
+        shutdown
+        !
+        router eigrp 1
+        network 10.0.3.0 0.0.0.255
+        network 10.0.2.0 0.0.0.255
+        !
+        ip classless
+        !
+        ip flow-export version 9
+        !
+        line con 0
+        !
+        line aux 0
+        !
+        line vty 0 4
+        login local
+        line vty 5 15
+        login local
+        !
+        end 
+        """
+
+        print("Finding current username")
+        current_username = running_config
+        current_username = current_username.split("username ", 1)
+        current_username = current_username[1].split("password")[0]
+        print(current_username)
+
+        # current_domain_name = running_config
+        # current_domain_name = current_domain_name.split("domain-name ", 1)
+        # current_domain_name = current_domain_name[1].split("\n")[0]
+
+        # Compare and change config if there's a difference
+        # if current_hostname != glo
+
+
+
     print(f"Device {device_ip_address} done")
+
+
 
 print("End")

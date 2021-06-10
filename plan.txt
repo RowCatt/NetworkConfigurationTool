@@ -29,9 +29,9 @@
 [x]	Error checking using PHP
 [x]	Prompt user to re-enter details if there is an error
 5.3.2 Database interaction
-[]	Create a ‘Global config’ DB table
-[]	Insert error checked config with PHP
-[]	Add flag to ‘Devices’ table to enable global config applying
+[x]	Create a ‘Global config’ DB table
+[x]	Insert error checked config with PHP
+[x]	Add flag to ‘Devices’ table to enable global config applying
 5.3.3 Integration with periodic device connection script
 []	Add to python cron task – if flagged in devices table
 []	If current config is different, create backup of config
