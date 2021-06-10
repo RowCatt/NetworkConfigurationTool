@@ -147,9 +147,17 @@ for device in localdb_data:
         current_username = current_username[1].split("password")[0]
         print(current_username)
 
-        # current_domain_name = running_config
-        # current_domain_name = current_domain_name.split("domain-name ", 1)
-        # current_domain_name = current_domain_name[1].split("\n")[0]
+        print("Finding current password")
+        current_password = running_config
+        current_password = current_password.split("password ", 1)
+        current_password = current_password[1].split("0")[0]
+        print(current_password)
+
+        print("Finding current domain-name")
+        current_domain_name = running_config
+        current_domain_name = current_domain_name.split("domain-name ", 1)
+        current_domain_name = current_domain_name[1].split("\n")[0]
+        print(current_domain_name)
 
         # Compare and change config if there's a difference
         # if current_hostname != glo
