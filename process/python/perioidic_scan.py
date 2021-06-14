@@ -161,7 +161,7 @@ for device in localdb_data:
         # Compare and if there's a difference, backup the old running config
         if current_username != global_username or current_domain_name != global_domain_name:
             # Backup current config
-            localdb_insert = f"INSERT INTO configuraitons (device_id, time_saved, configuration) VALUES ('{device_id}', '{time}', '{running_config}')"
+            localdb_insert = f"INSERT INTO configurations (device_id, time_saved, configuration) VALUES ('{device_id}', '{time}', '{running_config}')"
             localdb_cursor.execute(localdb_insert)
             localdb.commit()
 
