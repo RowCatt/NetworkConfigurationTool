@@ -41,7 +41,7 @@ while($device = mysqli_fetch_assoc($query)){
                 <h3> Edit Configuration </h3>
 
                 <div class="form-group">
-                    <p>Model: <?php $model ?></p>
+                    <p>Model: <?php echo $model ?></p>
                 </div>
 
                 <!-- <div class="form-group">
