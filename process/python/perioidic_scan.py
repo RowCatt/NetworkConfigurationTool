@@ -10,7 +10,7 @@ import datetime
 from netmiko import ConnectHandler
 import re
 
-time = datetime.now()
+time = datetime.datetime.now()
 
 localdb = mysql.connector.connect( # Connect to the local database
     host="localhost",
