@@ -33,9 +33,9 @@
 [x]	Insert error checked config with PHP
 [x]	Add flag to ‘Devices’ table to enable global config applying
 5.3.3 Integration with periodic device connection script
-[]	Add to python cron task – if flagged in devices table
-[]	If current config is different, create backup of config
-[]	Apply global config
+[x]	Add to python cron task – if flagged in devices table
+[x]	If current config is different, create backup of config
+[x]	Apply global config
 
 5.4 Network Configuration Management
 5.4.1 Dynamic Edit Configuration page creation

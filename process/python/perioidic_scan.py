@@ -10,7 +10,7 @@ import datetime
 from netmiko import ConnectHandler
 import re
 
-datetime = datetime.datetime.now()
+time = datetime.now()
 
 localdb = mysql.connector.connect( # Connect to the local database
     host="localhost",
@@ -70,7 +70,6 @@ for device in localdb_data:
 
     # Set oneline=1 and last_online=now
     print("Setting online and last_online")
-    time = datetime.now()
     localdb_update = f"UPDATE devices SET online='1', last_online='{time}' WHERE id='{device_id}'"
     localdb_cursor.execute(localdb_update)
     localdb.commit()
@@ -147,11 +146,11 @@ for device in localdb_data:
         current_username = current_username[1].split("password")[0]
         print(current_username)
 
-        print("Finding current password")
-        current_password = running_config
-        current_password = current_password.split("password ", 1)
-        current_password = current_password[1].split("\n")[0]
-        print(current_password)
+        # print("Finding current password")
+        # current_password = running_config
+        # current_password = current_password.split("password ", 1)
+        # current_password = current_password[1].split("\n")[0]
+        # print(current_password)
 
         print("Finding current domain-name")
         current_domain_name = running_config
@@ -159,8 +158,22 @@ for device in localdb_data:
         current_domain_name = current_domain_name[1].split("\n")[0]
         print(current_domain_name)
 
-        # Compare and change config if there's a difference
-        # if current_hostname != glo
+        # Compare and if there's a difference, backup the old running config
+        if current_username != global_username or current_domain_name != global_domain_name:
+            # Backup current config
+            localdb_insert = f"INSERT INTO configuraitons (device_id, time_saved, configuration) VALUES ('{device_id}', '{time}', '{running_config}')"
+            localdb_cursor.execute(localdb_insert)
+            localdb.commit()
+
+        # If no difference...
+        # Write the global config
+        # Remove current username and insert new user+pass
+        # Remove and add domain-name
+        config_commands = [ f'no username {current_username}',
+                            f'username {global_username} password {global_password}',
+                            'no ip domain-name',
+                            f'ip domain-name {global_domain_name}']
+        # applied_config = connect.send_config_set(config_commands)     # Apply config to device
 
 
 
