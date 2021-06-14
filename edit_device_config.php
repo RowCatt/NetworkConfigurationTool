@@ -48,7 +48,7 @@ while($result = mysqli_fetch_assoc($query)){
                 <h3> Edit Configuration </h3>
 
                 <div class="form-group">
-                    <p>Model: <?php echo $model ?></p>
+                    <p>Model: <?php echo $model_name ?></p>
                 </div>
 
                 <!-- <div class="form-group">
