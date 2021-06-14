@@ -26,6 +26,13 @@ while($device = mysqli_fetch_assoc($query)){
     $domain_name = $device["domain_name"];
 }
 
+// Get model name
+$query = "SELECT * FROM models WHERE id='$model' LIMIT 1";
+$query = mysqli_query($connect,$query);
+while($model = mysqli_fetch_assoc($query)){
+    $model = $model["name"];
+}
+
 ?>
 
 <body>
