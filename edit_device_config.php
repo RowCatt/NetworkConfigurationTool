@@ -7,13 +7,32 @@ require("requires/header.php");
 // Add databse connection info
 require("requires/connect.php");
 
+// Get device from id
+if(isset($_GET["id"]) || $_GET["id"] != ""){
+    $id = $_GET["id"];
+}
+
+$query = "SELECT * FROM devices WHERE id='$id' LIMIT 1";
+$query = mysqli_query($connect,$query);
+while($device = mysqli_fetch_assoc($query)){
+    $model = $device["model"];
+    $last_online = $device["last_online"];
+    $online = $device["online"];
+    $ip_address = $device["ip_address"];
+    $username = $device["username"];
+    $password = $device["password"];
+    $use_global_conf = $device["use_global_conf"];
+    $hostname = $device["hostname"];
+    $domain_name = $device["domain_name"];
+}
+
 ?>
 
 <body>
 
     <div class="container">
 
-        <?php require("requires/navbar.php"); // insert navbar ?>
+        <?php require("requires/navbar.php"); ?>
 
         <div class='container'>
 
@@ -22,10 +41,15 @@ require("requires/connect.php");
                 <h3> Edit Configuration </h3>
 
                 <div class="form-group">
-                    <label for="ip">IP Address</label>
-                    <input type="text" class="form-control" name="ip" id="ip">
+                    <p>Model: <?php $model ?></p>
                 </div>
 
+                <!-- <div class="form-group">
+                    <label for="ip">IP Address</label>
+                    <input type="text" class="form-control" name="ip" id="ip">
+                </div> -->
+
+                <!--
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" name="username" id="username">
@@ -34,25 +58,7 @@ require("requires/connect.php");
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="text" class="form-control" name="password" id="password">
-                </div>
-
-                <div class="form-group">
-                    <label for="model">Model</label>
-                    <select class="form-control" name="model" id="model">
-                        <?php
-
-                        // Get all models from DB
-                        $query = "SELECT * FROM `models`";
-                        $query = mysqli_query($connect,$query);
-                        while($model = mysqli_fetch_assoc($query))
-                        {
-                            $model = $model["name"];
-                            echo "<option value='$model'>$model</option>";
-                        }
-
-                        ?>
-                    </select>
-                </div>
+                </div> -->
 
                 <button type="submit" class="btn btn-primary">Add Device</button>
                 <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>

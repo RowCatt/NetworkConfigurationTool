@@ -39,7 +39,7 @@
 
 5.4 Network Configuration Management
 5.4.1 Dynamic Edit Configuration page creation
-[]	Add a dynamic edit config page for each device
+[x]	Add a dynamic edit config page for each device
 []	Populate page with config stored in the db
 []	Add checkbox for allowing automated / global config
 []	If checked (default), global config flag is applied to device
