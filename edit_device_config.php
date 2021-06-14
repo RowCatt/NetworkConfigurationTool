@@ -15,7 +15,7 @@ if(isset($_GET["id"]) || $_GET["id"] != ""){
 $query = "SELECT * FROM devices WHERE id='$id' LIMIT 1";
 $query = mysqli_query($connect,$query);
 while($device = mysqli_fetch_assoc($query)){
-    $model = $device["model"];
+    $model_id = $device["model"];
     $last_online = $device["last_online"];
     $online = $device["online"];
     $ip_address = $device["ip_address"];
@@ -27,10 +27,10 @@ while($device = mysqli_fetch_assoc($query)){
 }
 
 // Get model name
-$query = "SELECT * FROM models WHERE id='$model' LIMIT 1";
+$query = "SELECT * FROM models WHERE id='$model_id' LIMIT 1";
 $query = mysqli_query($connect,$query);
-while($model = mysqli_fetch_assoc($query)){
-    $model = $model["name"];
+while($result = mysqli_fetch_assoc($query)){
+    $model_name = $result["name"];
 }
 
 ?>
