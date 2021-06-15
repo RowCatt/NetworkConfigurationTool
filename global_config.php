@@ -31,6 +31,10 @@ while($config = mysqli_fetch_assoc($query)){
                 <h3> Edit Global Configuration </h3>
 
                 <div class="form-group">
+                    <a class='btn btn-primary' href='vlanManagement.php'> VLAN Management </a>
+                </div>
+
+                <div class="form-group">
                     <label for="username">Username</label>
                     <?php echo "<input type='text' class='form-control' name='username' id='username' value='$global_username'>"; ?>
                 </div>
