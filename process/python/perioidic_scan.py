@@ -174,7 +174,8 @@ for device in localdb_data:
                             'no ip domain-name',
                             f'ip domain-name {global_domain_name}']
         # applied_config = connect.send_config_set(config_commands)     # Apply config to device
-
+    else:
+        # Check if running config is different to device table config, if so, change
 
 
     print(f"Device {device_ip_address} done")

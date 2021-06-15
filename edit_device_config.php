@@ -78,8 +78,8 @@ if($online == 0){
                 </div>
 
                 <div class="form-group">
-                    <label for="ip_address">IP Address</label>
-                    <input type="text" class="form-control" name="ip_address" id="ip_address" value="<?php echo $ip_address; ?>">
+                    <p>IP Address: <?php echo $ip_address; ?></p>
+                    <p>If you wish to change the IP Address, delete and re-add the device.</p>
                 </div>
 
                 
