@@ -57,7 +57,7 @@
 [x]	Show PHP and python/Netmiko applying this config
 
 5.5 VLAN Management
-[]	Add VLAN Management page attached to Global conf page
+[x]	Add VLAN Management page attached to Global conf page
 []	Allow users to add/remove VLANs from the list
 []	Users can edit the names of VLANs
 []	Can set native vlan
