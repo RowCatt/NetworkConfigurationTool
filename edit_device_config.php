@@ -33,6 +33,12 @@ while($result = mysqli_fetch_assoc($query)){
     $model_name = $result["name"];
 }
 
+if($online == 0){
+    $online_str = "No";
+}else{
+    $online_str = "Yes";
+}
+
 ?>
 
 <body>
@@ -49,6 +55,14 @@ while($result = mysqli_fetch_assoc($query)){
 
                 <div class="form-group">
                     <p>Model: <?php echo $model_name ?></p>
+                </div>
+
+                <div class="form-group">
+                    <p>Currently online?: <?php echo $online_str ?></p>
+                </div>
+
+                <div class="form-group">
+                    <p>Last online: <?php echo $last_online ?></p>
                 </div>
 
                 <!-- <div class="form-group">
