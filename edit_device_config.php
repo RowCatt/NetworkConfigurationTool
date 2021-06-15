@@ -103,7 +103,7 @@ if($online == 0){
                     <input type="text" class="form-control" name="domain_name" id="domain_name" value="<?php echo $domain_name; ?>">
                 </div>
 
-                <input type="hidden" id="id" name="id" value="<?php echo $id; ?>"
+                <input type="hidden" id="id" name="id" value="<?php echo $id; ?>">
 
                 <button type="submit" class="btn btn-primary"> Save </button>
                 <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>
