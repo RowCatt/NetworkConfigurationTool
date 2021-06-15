@@ -174,7 +174,8 @@ for device in localdb_data:
         config_commands = [ f'no username {current_username}',
                             f'username {global_username} password {global_password}',
                             'no ip domain-name',
-                            f'ip domain-name {global_domain_name}']
+                            f'ip domain-name {global_domain_name}',
+                            'wr'] # check if this needs to be 'do wr' to write run mem to start
         # applied_config = connect.send_config_set(config_commands)     # Apply config to device
     else:
         # Check if running config is different to device table config, if so, change
@@ -261,6 +262,25 @@ for device in localdb_data:
         current_hostname = current_hostname.split("hostname ", 1)
         current_hostname = current_hostname[1].split("\n")[0]
         print(current_hostname)
+
+        # Compare and if there's a difference, backup the old running config
+        if current_username != device_username or current_domain_name != device_domain_name or current_hostname != device_hostname:
+            # Backup current config
+            localdb_insert = f"INSERT INTO configurations (device_id, time_saved, configuration) VALUES ('{device_id}', '{time}', '{running_config}')"
+            localdb_cursor.execute(localdb_insert)
+            localdb.commit()
+
+        # If no difference...
+        # Remove current config
+        # Write the new config
+        config_commands = [ f'no username {current_username}',
+                            f'username {global_username} password {global_password}',
+                            'no ip domain-name',
+                            f'ip domain-name {global_domain_name}',
+                            'no hostname',
+                            f'hostname {device_hostname}',
+                            'wr'] # CHECK THIS TOO AS IN THE GLOBAL_CONF
+        # applied_config = connect.send_config_set(config_commands)     # Apply config to device
 
 
     print(f"Device {device_ip_address} done")
