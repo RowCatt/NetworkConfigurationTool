@@ -1,4 +1,6 @@
 <?php
+$page_name = "View Configuration"; // Set page name
+require("requires/header.php");
 require("requires/connect.php");
 $config_id = $_GET["id"];
 $query = "SELECT * FROM configurations WHERE id='$config_id'";
