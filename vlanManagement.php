@@ -70,7 +70,7 @@ require("requires/connect.php");
 									echo "<button style='margin-left: 10px;' type='submit' class='btn btn-primary'>Rename</button>";
 								echo "</form>";
                             echo "</td>";
-                            echo "<td> <a class='btn btn-danger' href='deleteVlan.php?id=$vlan_id'> Delete </a> </td>";
+                            echo "<td> <a class='btn btn-danger' href='process/deleteVlan.php?id=$vlan_id'> Delete </a> </td>";
                         echo "</tr>";
                     }
 
