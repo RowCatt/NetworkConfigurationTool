@@ -54,34 +54,49 @@ if($online == 0){
                 <h3> Edit Configuration </h3>
 
                 <div class="form-group">
-                    <p>Model: <?php echo $model_name ?></p>
+                    <p>Model: <?php echo $model_name; ?></p>
                 </div>
 
                 <div class="form-group">
-                    <p>Currently online?: <?php echo $online_str ?></p>
+                    <p>Currently online? <?php echo $online_str; ?></p>
                 </div>
 
                 <div class="form-group">
-                    <p>Last online: <?php echo $last_online ?></p>
+                    <p>Last online: <?php echo $last_online; ?></p>
                 </div>
 
-                <!-- <div class="form-group">
-                    <label for="ip">IP Address</label>
-                    <input type="text" class="form-control" name="ip" id="ip">
-                </div> -->
+                <div class="form-group">
+                    <label for="use_global_conf"> Use Global Configuration? Note: This will bypass the information entered below. </label>
+                    <input type="checkbox" id="use_global_conf" name="use_global_conf" value="yes">
+                </div>
 
-                <!--
+                <div class="form-group">
+                    <label for="ip_address">IP Address</label>
+                    <input type="text" class="form-control" name="ip_address" id="ip_address" value="<?php echo $ip_address; ?>">
+                </div>
+
+                
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username">
+                    <input type="text" class="form-control" name="username" id="username" value="<?php echo $username; ?>">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" class="form-control" name="password" id="password">
-                </div> -->
+                    <input type="text" class="form-control" name="password" id="password" value="<?php echo $password; ?>">
+                </div>
 
-                <button type="submit" class="btn btn-primary">Add Device</button>
+                <div class="form-group">
+                    <label for="hostname">Hostname</label>
+                    <input type="text" class="form-control" name="hostname" id="hostname" value="<?php echo $hostname; ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="domain_name">Domain Name</label>
+                    <input type="text" class="form-control" name="domain_name" id="domain_name" value="<?php echo $domain_name; ?>">
+                </div>
+
+                <button type="submit" class="btn btn-primary"> Save </button>
                 <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>
 
             </form>
