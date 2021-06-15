@@ -66,6 +66,7 @@ require("requires/connect.php");
                             echo "<td>";
 								echo "<form action='process/renameVlan.php' method='post'>";
 									echo "<input style='width: 30%;' type='text' name='name' id='name'>";
+									echo "<input type='hidden' name='id' id='id' value='$vlan_id'>";
 									echo "<button style='margin-left: 10px;' type='submit' class='btn btn-primary'>Rename</button>";
 								echo "</form>";
                             echo "</td>";
