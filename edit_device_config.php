@@ -123,6 +123,26 @@ if($online == 0){
                 </div>
                 <div class="col" style='margin-top: 20px;'>
                     <h3> Configurations </h3>
+                    <p> Choose a Configuration to roll back to </p>
+
+                    <ul class="list-group">
+                        <?php
+                        $query_config = "SELECT * FROM configurations WHERE device_id='$id' ORDER BY time_saved DESC";
+                        $query_config = mysqli_query($connect,$query);
+                        while($config = mysqli_fetch_assoc($query_config)){
+                            $config_time_saved = $config["time_saved"];
+                            $config_id = $config["id"];
+                            
+                            echo "<li class='list-group-item'>";
+                                echo $config_time_saved;
+                                echo "<a style='margin-left: 15px;' class='btn btn-primary' href='viewConfig.php?id=$config_id'> View </a>";
+                                echo "<a style='margin-left: 15px;' class='btn btn-success' href='process/rollBackConfigProcess.php?id=$config_id'> Roll Back </a>";
+                            echo "</li>";
+
+                        }
+                        ?>
+                    </ul>
+
                 </div>
             </div>
 
