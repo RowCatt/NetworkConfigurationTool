@@ -49,7 +49,7 @@ if($online == 0){
 
         <div class='container'>
 
-            <form action='process/editDeviceConfigProcess.php' method='post' style='width: 30%; margin: 20px;'>
+            <form action='process/editDeviceConfigProcess.php' method='post' style='width: 50%; margin: 20px;'>
 
                 <h3> Edit Configuration </h3>
 
@@ -67,7 +67,14 @@ if($online == 0){
 
                 <div class="form-group">
                     <label for="use_global_conf"> Use Global Configuration? Note: This will bypass the information entered below. </label>
-                    <input type="checkbox" id="use_global_conf" name="use_global_conf" value="yes">
+                    <?php
+                    if($use_global_conf == 1){
+                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='yes' checked>";
+                    }else{
+                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='yes'>";
+                    }
+                    ?>
+                    
                 </div>
 
                 <div class="form-group">
