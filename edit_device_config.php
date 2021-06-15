@@ -49,9 +49,9 @@ if($online == 0){
 
         <div class='container'>
             <div class="row">
-                <div class="col">
+                <div class="col" style='margin-top: 20px;'>
                     
-                    <form action='process/editDeviceConfigProcess.php' method='post' style='width: 50%; margin: 20px;'>
+                    <form action='process/editDeviceConfigProcess.php' method='post'>
 
                         <h3> Edit Configuration </h3>
 
@@ -121,7 +121,7 @@ if($online == 0){
                     ?>
 
                 </div>
-                <div class="col">
+                <div class="col" style='margin-top: 20px;'>
                     <h3> Configurations </h3>
                 </div>
             </div>
