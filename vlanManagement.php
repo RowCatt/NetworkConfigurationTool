@@ -62,7 +62,13 @@ require("requires/connect.php");
                         echo "<tr>";
                             echo "<td> $vlan_number </td>";
                             echo "<td> $vlan_name </td>";
-                            echo "<td> <a class='btn btn-primary' href='renameVlan.php?id=$vlan_id'> Rename </a> </td>";
+                            // echo "<td> <a class='btn btn-primary' href='renameVlan.php?id=$vlan_id'> Rename </a> </td>";
+                            echo "<td>";
+								echo "<form action='process/renameVlan.php' method='post'>";
+									echo "<input type='text' class='form-control' name='name' id='name'>";
+									echo "<button type='submit' class='btn btn-primary'>Rename</button>";
+								echo "</form>";
+                            echo "</td>";
                             echo "<td> <a class='btn btn-danger' href='deleteVlan.php?id=$vlan_id'> Delete </a> </td>";
                         echo "</tr>";
                     }
