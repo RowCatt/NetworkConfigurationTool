@@ -45,12 +45,12 @@
 [x]	If checked (default), global config flag is applied to device
 [x]	If unchecked, unlocks fields using under global conf for user to enter details
 5.4.2 Applying configuration to devices
-[]	PHP sends config to Python
-[]	Python connects to device using Netmiko
-[]	If config has changed (new conf vs conf in devices table):
-[]	Take a backup of the current config
-[]	Apply the new config
-[]	Else: Don’t apply the config – nothing to change
+[x]	PHP sends config to Python
+[x]	Python connects to device using Netmiko
+[x]	If config has changed (new conf vs conf in devices table):
+[x]	Take a backup of the current config
+[x]	Apply the new config
+[x]	Else: Don’t apply the config – nothing to change
 5.4.3 Rolling back to previous configuration
 []	Show all configuration backups for a device in the edit config page
 []	A user can select a config to roll back to

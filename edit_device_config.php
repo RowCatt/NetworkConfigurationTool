@@ -48,6 +48,14 @@ if($online == 0){
         <?php require("requires/navbar.php"); ?>
 
         <div class='container'>
+            <div class="row">
+                <div class="col">
+                    Test 1
+                </div>
+                <div class="col">
+                    Test 2
+                </div>
+            </div>
 
             <form action='process/editDeviceConfigProcess.php' method='post' style='width: 50%; margin: 20px;'>
 
