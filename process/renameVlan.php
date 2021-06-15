@@ -17,7 +17,7 @@ if(mysqli_num_rows($query) > 0){
 }
 
 // Passed error checking, update the DB
-$query = "UPDATE vlans SET vlan_name='$name' WHERE vlan_id='$id'";
+$query = "UPDATE vlans SET vlan_name='$name' WHERE id='$id'";
 mysqli_query($connect,$query);
 
 header("Location: ../vlanManagement.php");
