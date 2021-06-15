@@ -71,7 +71,7 @@ file = open("temp.txt", "w")
 file.write(config_config)
 file.close()
 
-file = open("temp.txt", "r")
+# file = open("temp.txt", "r")
 # print(file.read())
 
 # connect.enable() # Jump to enable mode
