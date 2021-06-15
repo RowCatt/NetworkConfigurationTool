@@ -33,7 +33,7 @@ require("requires/connect.php");
                 <button type="submit" class="btn btn-primary">Add VLAN</button>
             </form>
 
-            <table class="table">
+            <table class="table" style="margin-top: 20px;">
                 <thead>
                     <tr>
                         <th scope="col>"> ID </th>
