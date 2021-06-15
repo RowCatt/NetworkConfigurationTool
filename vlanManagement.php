@@ -28,7 +28,7 @@ require("requires/connect.php");
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" name="id">
+                    <input type="text" class="form-control" name="name" name="name">
                 </div>
                 <button type="submit" class="btn btn-primary">Add VLAN</button>
             </form>
