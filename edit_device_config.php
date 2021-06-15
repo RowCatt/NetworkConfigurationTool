@@ -128,7 +128,7 @@ if($online == 0){
                     <ul class="list-group">
                         <?php
                         $query_config = "SELECT * FROM configurations WHERE device_id='$id' ORDER BY time_saved DESC";
-                        $query_config = mysqli_query($connect,$query);
+                        $query_config = mysqli_query($connect,$query_config);
                         while($config = mysqli_fetch_assoc($query_config)){
                             $config_time_saved = $config["time_saved"];
                             $config_id = $config["id"];
