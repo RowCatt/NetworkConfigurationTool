@@ -1,8 +1,8 @@
 <?php
 require("../requires/connect.php");
 
-if(isset($_POST["id"]) && $_POST["id"] != ""){
-    $id = $_POST["id"];
+if(isset($_GET["id"]) && $_GET["id"] != ""){
+    $id = $_GET["id"];
 }else{
     header("Location: ../vlanManagement.php?error=Fields left empty.");
     exit;
