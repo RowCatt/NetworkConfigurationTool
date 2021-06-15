@@ -30,6 +30,7 @@ require("requires/connect.php");
                     <label for="name">Name</label>
                     <input type="text" class="form-control" name="name" name="id">
                 </div>
+                <button type="submit" class="btn btn-primary">Add VLAN</button>
             </form>
 
             <table class="table">
