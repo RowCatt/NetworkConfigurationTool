@@ -58,9 +58,8 @@
 
 5.5 VLAN Management
 [x]	Add VLAN Management page attached to Global conf page
-[]	Allow users to add/remove VLANs from the list
-[]	Users can edit the names of VLANs
-[]	Can set native vlan
-[]	Create ‘vlan’ table in database
-[]	Once saved: drop and repopulate vlan table
+[x]	Allow users to add/remove VLANs from the list
+[x]	Users can edit the names of VLANs
+[x]	Create ‘vlan’ table in database
+[x]	Once saved: drop and repopulate vlan table
 []	Add to the periodic device connection, replace the VLANs if global conf enabled

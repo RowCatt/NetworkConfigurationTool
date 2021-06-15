@@ -2,6 +2,7 @@
 
 # import nmap3
 import json
+from os import name
 import sys
 import ipaddress
 import socket
@@ -148,12 +149,6 @@ for device in localdb_data:
         current_username = current_username[1].split("password")[0]
         print(current_username)
 
-        # print("Finding current password")
-        # current_password = running_config
-        # current_password = current_password.split("password ", 1)
-        # current_password = current_password[1].split("\n")[0]
-        # print(current_password)
-
         print("Finding current domain-name")
         current_domain_name = running_config
         current_domain_name = current_domain_name.split("domain-name ", 1)
@@ -178,7 +173,36 @@ for device in localdb_data:
                             'no ip domain-name',
                             f'ip domain-name {global_domain_name}',
                             'wr'] # check if this needs to be 'do wr' to write run mem to start
-        # applied_config = connect.send_config_set(config_commands)     # Apply config to device
+        # applied_config = netmiko_connect.send_config_set(config_commands)     # Apply config to device
+
+        # VLAN MANAGEMENT
+        # Get all deleted Vlans from the DB
+        # Loop through and remove from device
+        localdb_del_vlans = f"SELECT * FROM `vlans` WHERE deleted='1'"
+        localdb_cursor.execute(localdb_del_vlans)
+        localdb_vlan_data = localdb_cursor.fetchall()
+
+        for vlan in localdb_vlan_data:
+            vlan_number = vlan[1]
+            delete_vlan = [f'no int vlan {vlan_number}']
+            print(delete_vlan)
+            # output = netmiko_connect.send_config_set(delete_vlan)
+
+        # Get all active Vlans from the db
+        # Loop through and add to device
+        # Add description / name too
+        localdb_add_vlans = f"SELECT * FROM `vlans` WHERE deleted='0'"
+        localdb_cursor.execute(localdb_add_vlans)
+        localdb_vlan_data = localdb_cursor.fetchall()
+
+        for vlan in localdb_vlan_data:
+            vlan_number = vlan[1]
+            vlan_name = vlan[2]
+            add_vlan = [    f'int vlan {vlan_number}',
+                            f'desc {vlan_name}']
+            print(add_vlan)
+            # output = netmiko_connect.send_config_set(add_vlan)
+
     else:
         # Check if running config is different to device table config, if so, change
 
