@@ -57,7 +57,7 @@ require("requires/connect.php");
                     while($vlan = mysqli_fetch_assoc($query)){
                         $vlan_id = $vlan["id"];
                         $vlan_number = $vlan["vlan_number"];
-                        $vlan_name = $vlan["name"];
+                        $vlan_name = $vlan["vlan_name"];
 
                         echo "<tr>";
                             echo "<td> $vlan_number </td>";
