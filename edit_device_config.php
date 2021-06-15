@@ -69,9 +69,9 @@ if($online == 0){
                     <label for="use_global_conf"> Use Global Configuration? Note: This will bypass the information entered below. </label>
                     <?php
                     if($use_global_conf == 1){
-                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='yes' checked>";
+                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='Yes' checked>";
                     }else{
-                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='yes'>";
+                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='Yes'>";
                     }
                     ?>
                     
@@ -102,6 +102,8 @@ if($online == 0){
                     <label for="domain_name">Domain Name</label>
                     <input type="text" class="form-control" name="domain_name" id="domain_name" value="<?php echo $domain_name; ?>">
                 </div>
+
+                <input type="hidden" id="id" name="id" value="<?php echo $id; ?>"
 
                 <button type="submit" class="btn btn-primary"> Save </button>
                 <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>
