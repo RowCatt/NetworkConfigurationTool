@@ -24,7 +24,7 @@ localdb_cursor = localdb.cursor() # Used to interact with the DB
 # Collect arguments (device details from PHP)
 config_id = sys.argv[1]
 
-print(f"config id: {config_id}")
+# print(f"config id: {config_id}")
 
 # Get config from DB
 localdb_fetch = f"SELECT * FROM configurations WHERE id='{config_id}' LIMIT 1"
@@ -72,7 +72,7 @@ file.write(config_config)
 file.close()
 
 file = open("temp.txt", "r")
-print(file.read())
+# print(file.read())
 
 # connect.enable() # Jump to enable mode
 # Write rollback config
