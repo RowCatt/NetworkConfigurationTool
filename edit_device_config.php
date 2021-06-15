@@ -50,84 +50,81 @@ if($online == 0){
         <div class='container'>
             <div class="row">
                 <div class="col">
-                    Test 1
-                </div>
-                <div class="col">
-                    Test 2
-                </div>
-            </div>
+                    
+                    <form action='process/editDeviceConfigProcess.php' method='post' style='width: 50%; margin: 20px;'>
 
-            <form action='process/editDeviceConfigProcess.php' method='post' style='width: 50%; margin: 20px;'>
+                        <h3> Edit Configuration </h3>
 
-                <h3> Edit Configuration </h3>
+                        <div class="form-group">
+                            <p>Model: <?php echo $model_name; ?></p>
+                        </div>
 
-                <div class="form-group">
-                    <p>Model: <?php echo $model_name; ?></p>
-                </div>
+                        <div class="form-group">
+                            <p>Currently online? <?php echo $online_str; ?></p>
+                        </div>
 
-                <div class="form-group">
-                    <p>Currently online? <?php echo $online_str; ?></p>
-                </div>
+                        <div class="form-group">
+                            <p>Last online: <?php echo $last_online; ?></p>
+                        </div>
 
-                <div class="form-group">
-                    <p>Last online: <?php echo $last_online; ?></p>
-                </div>
+                        <div class="form-group">
+                            <label for="use_global_conf"> Use Global Configuration? Note: This will bypass the information entered below. </label>
+                            <?php
+                            if($use_global_conf == 1){
+                                echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='Yes' checked>";
+                            }else{
+                                echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='Yes'>";
+                            }
+                            ?>
+                            
+                        </div>
 
-                <div class="form-group">
-                    <label for="use_global_conf"> Use Global Configuration? Note: This will bypass the information entered below. </label>
+                        <div class="form-group">
+                            <p>IP Address: <?php echo $ip_address; ?></p>
+                            <p>If you wish to change the IP Address, delete and re-add the device.</p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username" value="<?php echo $username; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" name="password" id="password" value="<?php echo $password; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hostname">Hostname</label>
+                            <input type="text" class="form-control" name="hostname" id="hostname" value="<?php echo $hostname; ?>">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="domain_name">Domain Name</label>
+                            <input type="text" class="form-control" name="domain_name" id="domain_name" value="<?php echo $domain_name; ?>">
+                        </div>
+
+                        <input type="hidden" id="id" name="id" value="<?php echo $id; ?>">
+
+                        <button type="submit" class="btn btn-primary"> Save </button>
+                        <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>
+
+                    </form>
+
                     <?php
-                    if($use_global_conf == 1){
-                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='Yes' checked>";
-                    }else{
-                        echo "<input type='checkbox' id='use_global_conf' name='use_global_conf' value='Yes'>";
+                    // Check to see if there's an error sent by the processing page
+                    if(isset($_GET["error"]) && $_GET["error"] != ""){
+                        $error = $_GET["error"];
+                        echo "<p style='color: red'> $error </p>";
                     }
                     ?>
-                    
+
                 </div>
-
-                <div class="form-group">
-                    <p>IP Address: <?php echo $ip_address; ?></p>
-                    <p>If you wish to change the IP Address, delete and re-add the device.</p>
+                <div class="col">
+                    <h3> Configurations </h3>
                 </div>
-
-                
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username" value="<?php echo $username; ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" class="form-control" name="password" id="password" value="<?php echo $password; ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="hostname">Hostname</label>
-                    <input type="text" class="form-control" name="hostname" id="hostname" value="<?php echo $hostname; ?>">
-                </div>
-
-                <div class="form-group">
-                    <label for="domain_name">Domain Name</label>
-                    <input type="text" class="form-control" name="domain_name" id="domain_name" value="<?php echo $domain_name; ?>">
-                </div>
-
-                <input type="hidden" id="id" name="id" value="<?php echo $id; ?>">
-
-                <button type="submit" class="btn btn-primary"> Save </button>
-                <a style='margin-left: 15px;' class='btn btn-danger' href='devices.php'> Cancel </a>
-
-            </form>
-
-            <?php
-
-            // Check to see if there's an error sent by the processing page
-
-            if(isset($_GET["error"]) && $_GET["error"] != ""){
-                $error = $_GET["error"];
-                echo "<p style='color: red'> $error </p>";
-            }
-
-            ?>
+            </div>
 
         </div>
 
