@@ -15,9 +15,22 @@ require("requires/connect.php");
 
         <?php require("requires/navbar.php"); // insert navbar ?>
 
-        <div class='container'>
+        <div class='container' style="margin-top: 20px;">
 
             <h3> VLAN Management </h3>
+
+            <!-- <a class='btn btn-primary' href='addVlan.php'> Add VLAN </a> -->
+            <form action='process/addVlan.php' method='post' style='width: 20%;'>
+                <p> Add new VLAN </p>
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" name="id" id="id">
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" name="id">
+                </div>
+            </form>
 
             <table class="table">
                 <thead>
