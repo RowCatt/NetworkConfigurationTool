@@ -173,6 +173,8 @@ for device in localdb_data:
         # Remove and add domain-name
         config_commands = [ f'no username {current_username}',
                             f'username {global_username} password {global_password}',
+                            'no enable password',
+                            f'enable password {global_password}',
                             'no ip domain-name',
                             f'ip domain-name {global_domain_name}',
                             'wr'] # check if this needs to be 'do wr' to write run mem to start
@@ -274,9 +276,11 @@ for device in localdb_data:
         # Remove current config
         # Write the new config
         config_commands = [ f'no username {current_username}',
-                            f'username {global_username} password {global_password}',
+                            f'username {device_username} password {device_password}',
+                            'no enable password',
+                            f'enable password {device_password}',
                             'no ip domain-name',
-                            f'ip domain-name {global_domain_name}',
+                            f'ip domain-name {device_domain_name}',
                             'no hostname',
                             f'hostname {device_hostname}',
                             'wr'] # CHECK THIS TOO AS IN THE GLOBAL_CONF
