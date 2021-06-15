@@ -22,6 +22,7 @@ if(mysqli_num_rows($query) > 0){
     // VLAN Number already in use
     // Check if it has been deleted
     while($vlan = mysqli_fetch_assoc($query)){
+        $vlan_id = $vlan["id"];
         $deleted = $vlan["deleted"];
     }
 
@@ -31,7 +32,7 @@ if(mysqli_num_rows($query) > 0){
         exit; 
     }else{
         // Update the deleted vlan
-        $query = "UPDATE vlans SET vlan_name='$name', deleted='0' WHERE id='$id'";
+        $query = "UPDATE vlans SET vlan_name='$name', deleted='0' WHERE id='$vlan_id'";
         $query = mysqli_query($connect,$query);
         header("Location: ../vlanManagement.php");
         exit;
