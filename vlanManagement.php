@@ -58,23 +58,24 @@ require("requires/connect.php");
                         $vlan_id = $vlan["id"];
                         $vlan_number = $vlan["vlan_number"];
                         $vlan_name = $vlan["vlan_name"];
+						$vlan_deleted = $vlan["deleted"];
 
-                        echo "<tr>";
-                            echo "<td> $vlan_number </td>";
-                            echo "<td> $vlan_name </td>";
-                            // echo "<td> <a class='btn btn-primary' href='renameVlan.php?id=$vlan_id'> Rename </a> </td>";
-                            echo "<td>";
-								echo "<form action='process/renameVlan.php' method='post'>";
-									echo "<input style='width: 30%;' type='text' name='name' id='name'>";
-									echo "<input type='hidden' name='id' id='id' value='$vlan_id'>";
-									echo "<button style='margin-left: 10px;' type='submit' class='btn btn-primary'>Rename</button>";
-								echo "</form>";
-                            echo "</td>";
-                            echo "<td> <a class='btn btn-danger' href='process/deleteVlan.php?id=$vlan_id'> Delete </a> </td>";
-                        echo "</tr>";
+						if($vlan_deleted != 1){
+							echo "<tr>";
+								echo "<td> $vlan_number </td>";
+								echo "<td> $vlan_name </td>";
+								// echo "<td> <a class='btn btn-primary' href='renameVlan.php?id=$vlan_id'> Rename </a> </td>";
+								echo "<td>";
+									echo "<form action='process/renameVlan.php' method='post'>";
+										echo "<input style='width: 30%;' type='text' name='name' id='name'>";
+										echo "<input type='hidden' name='id' id='id' value='$vlan_id'>";
+										echo "<button style='margin-left: 10px;' type='submit' class='btn btn-primary'>Rename</button>";
+									echo "</form>";
+								echo "</td>";
+								echo "<td> <a class='btn btn-danger' href='process/deleteVlan.php?id=$vlan_id'> Delete </a> </td>";
+							echo "</tr>";
+						}
                     }
-
-
                     ?>
                 </tbody>
             </table>
