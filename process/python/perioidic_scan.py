@@ -43,6 +43,8 @@ for device in localdb_data:
     device_username = device[5]
     device_password = device[6]
     device_use_global_conf = device[7]
+    device_hostname = device[8]
+    device_domain_name = device[9]
 
     # Connect to deivce
     netmiko_connect = {
@@ -176,6 +178,89 @@ for device in localdb_data:
         # applied_config = connect.send_config_set(config_commands)     # Apply config to device
     else:
         # Check if running config is different to device table config, if so, change
+
+        # UNCOMMENT AFTER TESTING
+        # connect.enable()
+        # running_config = connect.send_command('show run')
+
+        # Placeholder running conf
+        running_config = """
+        Building configuration...
+
+        Current configuration : 833 bytes
+        !
+        version 15.1
+        no service timestamps log datetime msec
+        no service timestamps debug datetime msec
+        no service password-encryption
+        !
+        hostname R1
+        !
+        enable password adminpassword
+        !
+        ip cef
+        no ipv6 cef
+        !
+        username admin password 0 adminpassword
+        !
+        license udi pid CISCO2901/K9 sn FTX1524ZQ02-
+        !
+        ip domain-name lab.local
+        !
+        spanning-tree mode pvst
+        !
+        interface GigabitEthernet0/0
+        ip address 10.0.3.1 255.255.255.0
+        duplex auto
+        speed auto
+        !
+        interface GigabitEthernet0/1
+        ip address 10.0.2.1 255.255.255.0
+        duplex auto
+        speed auto
+        !
+        interface Vlan1
+        no ip address
+        shutdown
+        !
+        router eigrp 1
+        network 10.0.3.0 0.0.0.255
+        network 10.0.2.0 0.0.0.255
+        !
+        ip classless
+        !
+        ip flow-export version 9
+        !
+        line con 0
+        !
+        line aux 0
+        !
+        line vty 0 4
+        login local
+        line vty 5 15
+        login local
+        !
+        end 
+        """
+
+        # Gather data from running-conf
+        print("Finding current username")
+        current_username = running_config
+        current_username = current_username.split("username ", 1)
+        current_username = current_username[1].split("password")[0]
+        print(current_username)
+
+        print("Finding current domain-name")
+        current_domain_name = running_config
+        current_domain_name = current_domain_name.split("domain-name ", 1)
+        current_domain_name = current_domain_name[1].split("\n")[0]
+        print(current_domain_name)
+
+        print("Finding current hostname")
+        current_hostname = running_config
+        current_hostname = current_hostname.split("hostname ", 1)
+        current_hostname = current_hostname[1].split("\n")[0]
+        print(current_hostname)
 
 
     print(f"Device {device_ip_address} done")
