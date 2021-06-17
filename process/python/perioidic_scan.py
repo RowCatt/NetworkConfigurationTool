@@ -63,7 +63,7 @@ for device in localdb_data:
 
     # ADD BACK LATER
     try:
-        connect = ConnectHandler(**device) # Connect to device
+        connect = ConnectHandler(**netmiko_connect) # Connect to device
         print("Connection successful")
     except Exception as error:
         # Connection failed, set the device to offline
