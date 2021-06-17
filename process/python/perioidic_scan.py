@@ -87,6 +87,8 @@ for device in localdb_data:
                 'use_keys': 'false',
                 'allow_agent': ' false'
             }
+            connect = ConnectHandler(**netmiko_connect)
+            connect.enable()
         except Exception as error:
             print("Connection failed")
             localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
@@ -99,6 +101,9 @@ for device in localdb_data:
         # localdb_cursor.execute(localdb_update)
         # localdb.commit()
         # continue
+
+    # connect.disconnect()
+    # connect = ConnectHandler(**netmiko_connect)
 
     # Set oneline=1 and last_online=now
     print("Setting online and last_online")
