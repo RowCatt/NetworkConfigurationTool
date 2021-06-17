@@ -73,7 +73,7 @@ require("requires/connect.php");
                                 echo "<td> $last_online </td>";
                                 echo "<td>";
                                     if($online == 0){
-                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='process/remove_device.php?id=$id'> Remove Device </a>";
+                                        echo "<a style='margin: 15px;' class='btn btn-primary' href='remove_device.php?id=$id'> Remove Device </a>";
                                     }else{
                                         echo "<a style='margin: 15px;' class='btn btn-primary' href='edit_device_config.php?id=$id'> Edit Configuration </a>";
                                         echo "<a style='margin: 15px;' class='btn btn-primary' href='remove_device.php?id=$id'> Remove Device </a>";
