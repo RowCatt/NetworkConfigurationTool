@@ -160,11 +160,18 @@ hostname = hostname[1].split("\n")[0]
 # print(f"Hostname: {hostname} .")
 
 domain_name = running_config
-# Grabbing domain-name
-domain_name = domain_name.split("domain-name ", 1)
-# Remove everything after the domain-name line
-domain_name = domain_name[1].split("\n")[0]
-# print(f"Domain Name: {domain_name} .")
+
+# Different depending on device
+if model == "Cisco 2901 Router":
+    # Grabbing domain-name
+    domain_name = domain_name.split("domain name ", 1)
+    # Remove everything after the domain-name line
+    domain_name = domain_name[1].split("\n")[0]
+else:
+    domain_name = domain_name.split("domain-name ", 1)
+    domain_name = domain_name[1].split("\n")[0]
+
+
 
 time = datetime.now()
 localdb_insert = f"""INSERT INTO devices
