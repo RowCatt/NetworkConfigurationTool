@@ -60,16 +60,16 @@ for device in localdb_data:
     print(f"Attempting connection to {device_ip_address}")
 
     # ADD BACK LATER
-    # try:
-    #     connect = ConnectHandler(**device) # Connect to device
-    #     print("Connection successful")
-    # except Exception as error:
-    #     # Connection failed, set the device to offline
-    #     print("Connection failed")
-    #     localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
-    #     localdb_cursor.execute(localdb_update)
-    #     localdb.commit()
-    #     continue
+    try:
+        connect = ConnectHandler(**device) # Connect to device
+        print("Connection successful")
+    except Exception as error:
+        # Connection failed, set the device to offline
+        print("Connection failed")
+        localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
+        localdb_cursor.execute(localdb_update)
+        localdb.commit()
+        continue
 
     # Set oneline=1 and last_online=now
     print("Setting online and last_online")
@@ -80,68 +80,68 @@ for device in localdb_data:
     # Checking if device has global config enabled
     if device_use_global_conf == 1:
         # It does - check if the current config is different
-        # connect.enable()
-        # running_config = connect.send_command('show run')
+        connect.enable()
+        running_config = connect.send_command('show run')
 
         # Placeholder running conf
-        running_config = """
-        Building configuration...
+        # running_config = """
+        # Building configuration...
 
-        Current configuration : 833 bytes
-        !
-        version 15.1
-        no service timestamps log datetime msec
-        no service timestamps debug datetime msec
-        no service password-encryption
-        !
-        hostname R1
-        !
-        enable password adminpassword
-        !
-        ip cef
-        no ipv6 cef
-        !
-        username admin password 0 adminpassword
-        !
-        license udi pid CISCO2901/K9 sn FTX1524ZQ02-
-        !
-        ip domain-name lab.local
-        !
-        spanning-tree mode pvst
-        !
-        interface GigabitEthernet0/0
-        ip address 10.0.3.1 255.255.255.0
-        duplex auto
-        speed auto
-        !
-        interface GigabitEthernet0/1
-        ip address 10.0.2.1 255.255.255.0
-        duplex auto
-        speed auto
-        !
-        interface Vlan1
-        no ip address
-        shutdown
-        !
-        router eigrp 1
-        network 10.0.3.0 0.0.0.255
-        network 10.0.2.0 0.0.0.255
-        !
-        ip classless
-        !
-        ip flow-export version 9
-        !
-        line con 0
-        !
-        line aux 0
-        !
-        line vty 0 4
-        login local
-        line vty 5 15
-        login local
-        !
-        end 
-        """
+        # Current configuration : 833 bytes
+        # !
+        # version 15.1
+        # no service timestamps log datetime msec
+        # no service timestamps debug datetime msec
+        # no service password-encryption
+        # !
+        # hostname R1
+        # !
+        # enable password adminpassword
+        # !
+        # ip cef
+        # no ipv6 cef
+        # !
+        # username admin password 0 adminpassword
+        # !
+        # license udi pid CISCO2901/K9 sn FTX1524ZQ02-
+        # !
+        # ip domain-name lab.local
+        # !
+        # spanning-tree mode pvst
+        # !
+        # interface GigabitEthernet0/0
+        # ip address 10.0.3.1 255.255.255.0
+        # duplex auto
+        # speed auto
+        # !
+        # interface GigabitEthernet0/1
+        # ip address 10.0.2.1 255.255.255.0
+        # duplex auto
+        # speed auto
+        # !
+        # interface Vlan1
+        # no ip address
+        # shutdown
+        # !
+        # router eigrp 1
+        # network 10.0.3.0 0.0.0.255
+        # network 10.0.2.0 0.0.0.255
+        # !
+        # ip classless
+        # !
+        # ip flow-export version 9
+        # !
+        # line con 0
+        # !
+        # line aux 0
+        # !
+        # line vty 0 4
+        # login local
+        # line vty 5 15
+        # login local
+        # !
+        # end 
+        # """
 
         print("Finding current username")
         current_username = running_config
@@ -173,7 +173,7 @@ for device in localdb_data:
                             'no ip domain-name',
                             f'ip domain-name {global_domain_name}',
                             'wr'] # check if this needs to be 'do wr' to write run mem to start
-        # applied_config = netmiko_connect.send_config_set(config_commands)     # Apply config to device
+        applied_config = netmiko_connect.send_config_set(config_commands)     # Apply config to device
 
         # VLAN MANAGEMENT
         # Get all deleted Vlans from the DB
@@ -186,7 +186,7 @@ for device in localdb_data:
             vlan_number = vlan[1]
             delete_vlan = [f'no int vlan {vlan_number}']
             print(delete_vlan)
-            # output = netmiko_connect.send_config_set(delete_vlan)
+            output = netmiko_connect.send_config_set(delete_vlan)
 
         # Get all active Vlans from the db
         # Loop through and add to device
@@ -201,74 +201,74 @@ for device in localdb_data:
             add_vlan = [    f'int vlan {vlan_number}',
                             f'desc {vlan_name}']
             print(add_vlan)
-            # output = netmiko_connect.send_config_set(add_vlan)
+            output = netmiko_connect.send_config_set(add_vlan)
 
     else:
         # Check if running config is different to device table config, if so, change
 
         # UNCOMMENT AFTER TESTING
-        # connect.enable()
-        # running_config = connect.send_command('show run')
+        connect.enable()
+        running_config = connect.send_command('show run')
 
         # Placeholder running conf
-        running_config = """
-        Building configuration...
+        # running_config = """
+        # Building configuration...
 
-        Current configuration : 833 bytes
-        !
-        version 15.1
-        no service timestamps log datetime msec
-        no service timestamps debug datetime msec
-        no service password-encryption
-        !
-        hostname R1
-        !
-        enable password adminpassword
-        !
-        ip cef
-        no ipv6 cef
-        !
-        username admin password 0 adminpassword
-        !
-        license udi pid CISCO2901/K9 sn FTX1524ZQ02-
-        !
-        ip domain-name lab.local
-        !
-        spanning-tree mode pvst
-        !
-        interface GigabitEthernet0/0
-        ip address 10.0.3.1 255.255.255.0
-        duplex auto
-        speed auto
-        !
-        interface GigabitEthernet0/1
-        ip address 10.0.2.1 255.255.255.0
-        duplex auto
-        speed auto
-        !
-        interface Vlan1
-        no ip address
-        shutdown
-        !
-        router eigrp 1
-        network 10.0.3.0 0.0.0.255
-        network 10.0.2.0 0.0.0.255
-        !
-        ip classless
-        !
-        ip flow-export version 9
-        !
-        line con 0
-        !
-        line aux 0
-        !
-        line vty 0 4
-        login local
-        line vty 5 15
-        login local
-        !
-        end 
-        """
+        # Current configuration : 833 bytes
+        # !
+        # version 15.1
+        # no service timestamps log datetime msec
+        # no service timestamps debug datetime msec
+        # no service password-encryption
+        # !
+        # hostname R1
+        # !
+        # enable password adminpassword
+        # !
+        # ip cef
+        # no ipv6 cef
+        # !
+        # username admin password 0 adminpassword
+        # !
+        # license udi pid CISCO2901/K9 sn FTX1524ZQ02-
+        # !
+        # ip domain-name lab.local
+        # !
+        # spanning-tree mode pvst
+        # !
+        # interface GigabitEthernet0/0
+        # ip address 10.0.3.1 255.255.255.0
+        # duplex auto
+        # speed auto
+        # !
+        # interface GigabitEthernet0/1
+        # ip address 10.0.2.1 255.255.255.0
+        # duplex auto
+        # speed auto
+        # !
+        # interface Vlan1
+        # no ip address
+        # shutdown
+        # !
+        # router eigrp 1
+        # network 10.0.3.0 0.0.0.255
+        # network 10.0.2.0 0.0.0.255
+        # !
+        # ip classless
+        # !
+        # ip flow-export version 9
+        # !
+        # line con 0
+        # !
+        # line aux 0
+        # !
+        # line vty 0 4
+        # login local
+        # line vty 5 15
+        # login local
+        # !
+        # end 
+        # """
 
         # Gather data from running-conf
         print("Finding current username")
@@ -308,7 +308,7 @@ for device in localdb_data:
                             'no hostname',
                             f'hostname {device_hostname}',
                             'wr'] # CHECK THIS TOO AS IN THE GLOBAL_CONF
-        # applied_config = connect.send_config_set(config_commands)     # Apply config to device
+        applied_config = connect.send_config_set(config_commands)     # Apply config to device
 
 
     print(f"Device {device_ip_address} done")

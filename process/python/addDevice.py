@@ -68,78 +68,78 @@ device = {
 }
 
 # RE-ADD LATER. REMOVED FOR TESTING
-# try:
-#     connect = ConnectHandler(**device) # Connect to device
-# except Exception as error: # If there's an error (device not reachable, wrong credentials)
-#     print(f"""ERROR
-#     CONNECTION FAILED: {error}
-#     """)
-#     sys.exit()
+try:
+    connect = ConnectHandler(**device) # Connect to device
+except Exception as error: # If there's an error (device not reachable, wrong credentials)
+    print(f"""ERROR
+    CONNECTION FAILED: {error}
+    """)
+    sys.exit()
 
 # # If device is logged into:
-# connect.enable() # Jump to enable mode
-# running_config = connect.send_command('show run') # Show running configuration
+connect.enable() # Jump to enable mode
+running_config = connect.send_command('show run') # Show running configuration
 
 # This should output something like:
 #=====================================================
-running_config = """
-Building configuration...
+# running_config = """
+# Building configuration...
 
-Current configuration : 833 bytes
-!
-version 15.1
-no service timestamps log datetime msec
-no service timestamps debug datetime msec
-no service password-encryption
-!
-hostname R1
-!
-enable password adminpassword
-!
-ip cef
-no ipv6 cef
-!
-username admin password 0 adminpassword
-!
-license udi pid CISCO2901/K9 sn FTX1524ZQ02-
-!
-ip domain-name lab.local
-!
-spanning-tree mode pvst
-!
-interface GigabitEthernet0/0
- ip address 10.0.3.1 255.255.255.0
- duplex auto
- speed auto
-!
-interface GigabitEthernet0/1
- ip address 10.0.2.1 255.255.255.0
- duplex auto
- speed auto
-!
-interface Vlan1
- no ip address
- shutdown
-!
-router eigrp 1
- network 10.0.3.0 0.0.0.255
- network 10.0.2.0 0.0.0.255
-!
-ip classless
-!
-ip flow-export version 9
-!
-line con 0
-!
-line aux 0
-!
-line vty 0 4
- login local
-line vty 5 15
- login local
-!
-end 
-"""
+# Current configuration : 833 bytes
+# !
+# version 15.1
+# no service timestamps log datetime msec
+# no service timestamps debug datetime msec
+# no service password-encryption
+# !
+# hostname R1
+# !
+# enable password adminpassword
+# !
+# ip cef
+# no ipv6 cef
+# !
+# username admin password 0 adminpassword
+# !
+# license udi pid CISCO2901/K9 sn FTX1524ZQ02-
+# !
+# ip domain-name lab.local
+# !
+# spanning-tree mode pvst
+# !
+# interface GigabitEthernet0/0
+#  ip address 10.0.3.1 255.255.255.0
+#  duplex auto
+#  speed auto
+# !
+# interface GigabitEthernet0/1
+#  ip address 10.0.2.1 255.255.255.0
+#  duplex auto
+#  speed auto
+# !
+# interface Vlan1
+#  no ip address
+#  shutdown
+# !
+# router eigrp 1
+#  network 10.0.3.0 0.0.0.255
+#  network 10.0.2.0 0.0.0.255
+# !
+# ip classless
+# !
+# ip flow-export version 9
+# !
+# line con 0
+# !
+# line aux 0
+# !
+# line vty 0 4
+#  login local
+# line vty 5 15
+#  login local
+# !
+# end 
+# """
 #=====================================================
 
 # We already have username and password from adding the device
@@ -164,12 +164,6 @@ domain_name = domain_name.split("domain-name ", 1)
 domain_name = domain_name[1].split("\n")[0]
 # print(f"Domain Name: {domain_name} .")
 
-# Insert device into the database using the info collected
-# localdb_insert = f"""INSERT INTO devices 
-#         (ip_address, mac_address, vendor, os, os_type, os_family, os_gen, ssh, http, hostname, online, last_pinged) 
-#         VALUES ('{ipAddress}', '{macAddress}', '{vendor}', '{os}', '{os_type}', '{os_family}', '{os_gen}', '{ssh}', '{http}', '{hostname}', 'Yes', '{datetime.datetime.now()}')"""
-#         localdb_cursor.execute(localdb_insert)
-#         localdb.commit()
 time = datetime.now()
 localdb_insert = f"""INSERT INTO devices
 (model, last_online, online, ip_address, username, password, use_global_conf, hostname, domain_name)

@@ -57,13 +57,14 @@ device = {
 }
 
 # RE-ADD LATER. REMOVED FOR TESTING
-# try:
-#     connect = ConnectHandler(**device) # Connect to device
-# except Exception as error: # If there's an error (device not reachable, wrong credentials)
-#     print(f"""ERROR
-#     CONNECTION FAILED: {error}
-#     """)
-#     sys.exit()
+try:
+    connect = ConnectHandler(**device) # Connect to device
+except Exception as error: # If there's an error (device not reachable, wrong credentials)
+    print(f"""ERROR
+    CONNECTION FAILED: {error}
+    """)
+    sys.exit()
+
 
 
 # Write rollback config to temp.txt
@@ -74,9 +75,9 @@ file.close()
 # file = open("temp.txt", "r")
 # print(file.read())
 
-# connect.enable() # Jump to enable mode
+connect.enable() # Jump to enable mode
 # Write rollback config
-# output = connect.send_config_from_file("temp.txt")
+output = connect.send_config_from_file("temp.txt")
 
 # Set last online
 localdb_update = f"UPDATE devices SET online='1', last_online='{time}' WHERE id='{device_id}'"
