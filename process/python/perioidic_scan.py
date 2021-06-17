@@ -308,8 +308,7 @@ for device in localdb_data:
                             'no ip domain-name',
                             f'ip domain-name {device_domain_name}',
                             'no hostname',
-                            f'hostname {device_hostname}',
-                            'wr'] # CHECK THIS TOO AS IN THE GLOBAL_CONF
+                            f'hostname {device_hostname}'] # CHECK THIS TOO AS IN THE GLOBAL_CONF
         applied_config = connect.send_config_set(config_commands)     # Apply config to device
 
 
