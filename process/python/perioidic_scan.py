@@ -67,7 +67,7 @@ for device in localdb_data:
         connect = ConnectHandler(**netmiko_connect) # Connect to device
         connect.enable()
         print("Connection successful")
-    except Exception as error:
+    except:
         try:
             localdb_fetch = f"SELECT * FROM `global_configuration`"
             localdb_cursor.execute(localdb_fetch)
@@ -89,18 +89,14 @@ for device in localdb_data:
             }
             connect = ConnectHandler(**netmiko_connect)
             connect.enable()
-        except Exception as error:
+            print("Connection successful")
+            # except Exception as error:
+        except:
             print("Connection failed")
             localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
             localdb_cursor.execute(localdb_update)
             localdb.commit()
             continue
-        # # Connection failed, set the device to offline
-        # print("Connection failed")
-        # localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
-        # localdb_cursor.execute(localdb_update)
-        # localdb.commit()
-        # continue
 
     # connect.disconnect()
     # connect = ConnectHandler(**netmiko_connect)
