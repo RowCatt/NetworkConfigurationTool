@@ -73,9 +73,9 @@ for device in localdb_data:
             localdb_cursor.execute(localdb_fetch)
             localdb_data = localdb_cursor.fetchall()
 
-            for global in localdb_data:
-                global_username = global[1]
-                global_password = global[2]
+            for global_conf in localdb_data:
+                global_username = global_conf[1]
+                global_password = global_conf[2]
 
             netmiko_connect = {
                 'device_type':  'cisco_ios',
