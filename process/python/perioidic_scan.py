@@ -69,13 +69,15 @@ for device in localdb_data:
         print("Connection successful")
     except:
         try:
-            localdb_fetch = f"SELECT * FROM `global_configuration`"
+            localdb_fetch = f"SELECT * FROM `global_configuration` LIMIT 1"
             localdb_cursor.execute(localdb_fetch)
             localdb_data = localdb_cursor.fetchall()
 
             for global_conf in localdb_data:
                 global_username = global_conf[1]
                 global_password = global_conf[2]
+                print(f"Global username: {global_username}")
+                print(f"Global password: {global_password}")
 
             netmiko_connect = {
                 'device_type':  'cisco_ios',
@@ -203,12 +205,16 @@ for device in localdb_data:
         # print(current_domain_name)
 
         current_domain_name = running_config
+        print(current_domain_name)
         try:
             current_domain_name = current_domain_name.split("domain name ", 1)
             current_domain_name = current_domain_name[1].split("\n")[0]
         except:
-            current_domain_name = current_domain_name.split("domain-name ", 1)
-            current_domain_name = current_domain_name[1].split("\n")[0]
+            try:
+                current_domain_name = current_domain_name.split("domain-name ", 1)
+                current_domain_name = current_domain_name[1].split("\n")[0]
+            except:
+                current_domain_name = 'example.org'
         print(current_domain_name)
 
         print("Finding current hostname")
