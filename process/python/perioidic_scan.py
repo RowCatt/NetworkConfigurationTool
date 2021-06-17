@@ -188,7 +188,7 @@ for device in localdb_data:
             vlan_number = vlan[1]
             delete_vlan = [f'no int vlan {vlan_number}']
             print(delete_vlan)
-            output = netmiko_connect.send_config_set(delete_vlan)
+            output = connect.send_config_set(delete_vlan, cmd_verify=False)
 
         # Get all active Vlans from the db
         # Loop through and add to device
@@ -203,7 +203,7 @@ for device in localdb_data:
             add_vlan = [    f'int vlan {vlan_number}',
                             f'desc {vlan_name}']
             print(add_vlan)
-            output = netmiko_connect.send_config_set(add_vlan)
+            output = connect.send_config_set(add_vlan, cmd_verify=False)
 
     else:
         # Check if running config is different to device table config, if so, change
@@ -309,7 +309,7 @@ for device in localdb_data:
                             f'ip domain-name {device_domain_name}',
                             'no hostname',
                             f'hostname {device_hostname}'] # CHECK THIS TOO AS IN THE GLOBAL_CONF
-        applied_config = connect.send_config_set(config_commands)     # Apply config to device
+        applied_config = connect.send_config_set(config_commands, cmd_verify=False)     # Apply config to device
 
 
     print(f"Device {device_ip_address} done")
