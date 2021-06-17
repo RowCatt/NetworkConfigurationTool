@@ -205,7 +205,7 @@ for device in localdb_data:
         # print(current_domain_name)
 
         current_domain_name = running_config
-        print(current_domain_name)
+        # print(current_domain_name)
         try:
             current_domain_name = current_domain_name.split("domain name ", 1)
             current_domain_name = current_domain_name[1].split("\n")[0]
