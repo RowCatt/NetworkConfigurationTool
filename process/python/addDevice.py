@@ -82,68 +82,6 @@ except Exception as error: # If there's an error (device not reachable, wrong cr
 connect.enable() # Jump to enable mode
 running_config = connect.send_command('show run') # Show running configuration
 
-# This should output something like:
-#=====================================================
-# running_config = """
-# Building configuration...
-
-# Current configuration : 833 bytes
-# !
-# version 15.1
-# no service timestamps log datetime msec
-# no service timestamps debug datetime msec
-# no service password-encryption
-# !
-# hostname R1
-# !
-# enable password adminpassword
-# !
-# ip cef
-# no ipv6 cef
-# !
-# username admin password 0 adminpassword
-# !
-# license udi pid CISCO2901/K9 sn FTX1524ZQ02-
-# !
-# ip domain-name lab.local
-# !
-# spanning-tree mode pvst
-# !
-# interface GigabitEthernet0/0
-#  ip address 10.0.3.1 255.255.255.0
-#  duplex auto
-#  speed auto
-# !
-# interface GigabitEthernet0/1
-#  ip address 10.0.2.1 255.255.255.0
-#  duplex auto
-#  speed auto
-# !
-# interface Vlan1
-#  no ip address
-#  shutdown
-# !
-# router eigrp 1
-#  network 10.0.3.0 0.0.0.255
-#  network 10.0.2.0 0.0.0.255
-# !
-# ip classless
-# !
-# ip flow-export version 9
-# !
-# line con 0
-# !
-# line aux 0
-# !
-# line vty 0 4
-#  login local
-# line vty 5 15
-#  login local
-# !
-# end 
-# """
-#=====================================================
-
 # We already have username and password from adding the device
 # Hostname and Domain-name are needed so they will be extracted from the config
 # print (f"""

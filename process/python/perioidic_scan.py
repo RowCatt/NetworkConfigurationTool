@@ -117,76 +117,25 @@ for device in localdb_data:
         connect.enable()
         running_config = connect.send_command('show run')
 
-        # Placeholder running conf
-        # running_config = """
-        # Building configuration...
-
-        # Current configuration : 833 bytes
-        # !
-        # version 15.1
-        # no service timestamps log datetime msec
-        # no service timestamps debug datetime msec
-        # no service password-encryption
-        # !
-        # hostname R1
-        # !
-        # enable password adminpassword
-        # !
-        # ip cef
-        # no ipv6 cef
-        # !
-        # username admin password 0 adminpassword
-        # !
-        # license udi pid CISCO2901/K9 sn FTX1524ZQ02-
-        # !
-        # ip domain-name lab.local
-        # !
-        # spanning-tree mode pvst
-        # !
-        # interface GigabitEthernet0/0
-        # ip address 10.0.3.1 255.255.255.0
-        # duplex auto
-        # speed auto
-        # !
-        # interface GigabitEthernet0/1
-        # ip address 10.0.2.1 255.255.255.0
-        # duplex auto
-        # speed auto
-        # !
-        # interface Vlan1
-        # no ip address
-        # shutdown
-        # !
-        # router eigrp 1
-        # network 10.0.3.0 0.0.0.255
-        # network 10.0.2.0 0.0.0.255
-        # !
-        # ip classless
-        # !
-        # ip flow-export version 9
-        # !
-        # line con 0
-        # !
-        # line aux 0
-        # !
-        # line vty 0 4
-        # login local
-        # line vty 5 15
-        # login local
-        # !
-        # end 
-        # """
-
         print("Finding current username")
         current_username = running_config
         current_username = current_username.split("username ", 1)
         current_username = current_username[1].split("password")[0]
         print(current_username)
 
-        print("Finding current domain-name")
+        # print("Finding current domain-name")
+        # current_domain_name = running_config
+        # current_domain_name = current_domain_name.split("domain-name ", 1)
+        # current_domain_name = current_domain_name[1].split("\n")[0]
+        # print(current_domain_name)
+
         current_domain_name = running_config
-        current_domain_name = current_domain_name.split("domain-name ", 1)
-        current_domain_name = current_domain_name[1].split("\n")[0]
+        try:
+            current_domain_name = current_domain_name.split("domain name ", 1)
+            current_domain_name = current_domain_name[1].split("\n")[0]
+        except:
+            current_domain_name = current_domain_name.split("domain-name ", 1)
+            current_domain_name = current_domain_name[1].split("\n")[0]
         print(current_domain_name)
 
         # Compare and if there's a difference, backup the old running config
@@ -244,66 +193,6 @@ for device in localdb_data:
         connect.enable()
         running_config = connect.send_command('show run')
 
-        # Placeholder running conf
-        # running_config = """
-        # Building configuration...
-
-        # Current configuration : 833 bytes
-        # !
-        # version 15.1
-        # no service timestamps log datetime msec
-        # no service timestamps debug datetime msec
-        # no service password-encryption
-        # !
-        # hostname R1
-        # !
-        # enable password adminpassword
-        # !
-        # ip cef
-        # no ipv6 cef
-        # !
-        # username admin password 0 adminpassword
-        # !
-        # license udi pid CISCO2901/K9 sn FTX1524ZQ02-
-        # !
-        # ip domain-name lab.local
-        # !
-        # spanning-tree mode pvst
-        # !
-        # interface GigabitEthernet0/0
-        # ip address 10.0.3.1 255.255.255.0
-        # duplex auto
-        # speed auto
-        # !
-        # interface GigabitEthernet0/1
-        # ip address 10.0.2.1 255.255.255.0
-        # duplex auto
-        # speed auto
-        # !
-        # interface Vlan1
-        # no ip address
-        # shutdown
-        # !
-        # router eigrp 1
-        # network 10.0.3.0 0.0.0.255
-        # network 10.0.2.0 0.0.0.255
-        # !
-        # ip classless
-        # !
-        # ip flow-export version 9
-        # !
-        # line con 0
-        # !
-        # line aux 0
-        # !
-        # line vty 0 4
-        # login local
-        # line vty 5 15
-        # login local
-        # !
-        # end 
-        # """
-
         # Gather data from running-conf
         print("Finding current username")
         current_username = running_config
@@ -311,10 +200,19 @@ for device in localdb_data:
         current_username = current_username[1].split("password")[0]
         print(current_username)
 
-        print("Finding current domain-name")
+        # print("Finding current domain-name")
+        # current_domain_name = running_config
+        # current_domain_name = current_domain_name.split("domain-name ", 1)
+        # current_domain_name = current_domain_name[1].split("\n")[0]
+        # print(current_domain_name)
+
         current_domain_name = running_config
-        current_domain_name = current_domain_name.split("domain-name ", 1)
-        current_domain_name = current_domain_name[1].split("\n")[0]
+        try:
+            current_domain_name = current_domain_name.split("domain name ", 1)
+            current_domain_name = current_domain_name[1].split("\n")[0]
+        except:
+            current_domain_name = current_domain_name.split("domain-name ", 1)
+            current_domain_name = current_domain_name[1].split("\n")[0]
         print(current_domain_name)
 
         print("Finding current hostname")
