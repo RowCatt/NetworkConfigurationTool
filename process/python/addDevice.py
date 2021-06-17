@@ -65,6 +65,7 @@ device = {
     'password':      password,
     'port' :         22,
     'secret':        password,
+    'use_keys': 'false'
 }
 
 # RE-ADD LATER. REMOVED FOR TESTING
