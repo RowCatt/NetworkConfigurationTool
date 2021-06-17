@@ -56,7 +56,8 @@ for device in localdb_data:
         'port' :         22,
         'secret':        device_password,
         'use_keys': 'false',
-        'allow_agent': ' false'
+        'allow_agent': ' false',
+        'cmd_verify': 'false'
     }
 
     print(f"Attempting connection to {device_ip_address}")
