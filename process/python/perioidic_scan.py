@@ -56,8 +56,7 @@ for device in localdb_data:
         'port' :         22,
         'secret':        device_password,
         'use_keys': 'false',
-        'allow_agent': ' false',
-        'cmd_verify': 'false'
+        'allow_agent': ' false'
     }
 
     print(f"Attempting connection to {device_ip_address}")
@@ -176,7 +175,7 @@ for device in localdb_data:
                             'no ip domain-name',
                             f'ip domain-name {global_domain_name}',
                             'wr'] # check if this needs to be 'do wr' to write run mem to start
-        applied_config = connect.send_config_set(config_commands)     # Apply config to device
+        applied_config = connect.send_config_set(config_commands, cmd_verify=False)     # Apply config to device
 
         # VLAN MANAGEMENT
         # Get all deleted Vlans from the DB
