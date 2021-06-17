@@ -132,8 +132,11 @@ for device in localdb_data:
             current_domain_name = current_domain_name.split("domain name ", 1)
             current_domain_name = current_domain_name[1].split("\n")[0]
         except:
-            current_domain_name = current_domain_name.split("domain-name ", 1)
-            current_domain_name = current_domain_name[1].split("\n")[0]
+            try:
+                current_domain_name = current_domain_name.split("domain-name ", 1)
+                current_domain_name = current_domain_name[1].split("\n")[0]
+            except:
+                current_domain_name = 'example.org'
         print(current_domain_name)
 
         # Compare and if there's a difference, backup the old running config
