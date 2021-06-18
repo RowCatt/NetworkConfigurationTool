@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# import nmap3
 import json
 import sys
 import ipaddress
@@ -27,14 +26,6 @@ username = sys.argv[2]
 password = sys.argv[3]
 model = sys.argv[4]
 
-# print(f"""
-# Entered Data:
-# IP:       {ip}
-# Username: {username}
-# Password: {password}
-# Model:    {model}
-# """)
-
 # Find model os_type
 localdb_fetch = f"SELECT * FROM `models` WHERE `name`='{model}' LIMIT 1"
 localdb_cursor.execute(localdb_fetch)
@@ -48,7 +39,6 @@ if not localdb_data: # If the model is in the DB
 for data in localdb_data:
     model_id = data[0]
     model_os_type = data[2]
-    # print(model_os_type)
 
 if model_os_type != "IOS":
     print("""ERROR
@@ -69,7 +59,6 @@ device = {
     'allow_agent': ' false'
 }
 
-# RE-ADD LATER. REMOVED FOR TESTING
 try:
     connect = ConnectHandler(**device) # Connect to device
 except Exception as error: # If there's an error (device not reachable, wrong credentials)
@@ -84,18 +73,12 @@ running_config = connect.send_command('show run') # Show running configuration
 
 # We already have username and password from adding the device
 # Hostname and Domain-name are needed so they will be extracted from the config
-# print (f"""
-# =========================================
-# {running_config}
-# =========================================
-# """)
 hostname = running_config
 # Grab hostname
 # Get everything after hostname:
 hostname = hostname.split("hostname ", 1)
 # Remove everything after the hostname line
 hostname = hostname[1].split("\n")[0]
-# print(f"Hostname: {hostname} .")
 
 domain_name = running_config
 
@@ -117,9 +100,7 @@ localdb_insert = f"""INSERT INTO devices
 VALUES ('{model_id}', '{time}', '1', '{ip}', '{username}', '{password}', '0', '{hostname}', '{domain_name}')"""
 localdb_cursor.execute(localdb_insert)
 localdb.commit()
-# print("Device entered into database")
 
-# print("SAVING CONFIG ============================")
 # Save the config to the configurations table
 # Get the ID of the device just inserted
 
@@ -129,12 +110,9 @@ localdb_data = localdb_cursor.fetchall()
 for device in localdb_data:
     device_id = device[0]
 
-# print(f"Device ID is: {device_id}")
 
 localdb_insert = f"""INSERT INTO configurations
 (device_id, time_saved, configuration)
 VALUES ('{device_id}', '{time}', '{running_config}')"""
 localdb_cursor.execute(localdb_insert)
 localdb.commit()
-
-# print("-= END =-")

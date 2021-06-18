@@ -2,6 +2,8 @@
 
 require("../requires/connect.php");
 
+// ERROR CHECKING
+
 if(isset($_POST["id"]) && $_POST["id"] != ""){
     $config_id = $_POST["id"];
 }else{
@@ -12,6 +14,13 @@ if(isset($_POST["id"]) && $_POST["id"] != ""){
 // Send info to python to execute
 exec("python3 /var/www/html/NetworkConfigurationTool/process/python/rollBackConfig.py '$id'", $output);
 
-header("Location: ../devices.php");
+$code = $output[0];
+$message = $output[1];
+
+if($code == "ERROR"){
+    header("Location: ../devices.php?error=$message");
+}else{
+    header("Location: ../devices.php");
+}
 
 ?>

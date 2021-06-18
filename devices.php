@@ -12,7 +12,6 @@ require("requires/connect.php");
 <body>
 
     <div class="container">
-
         <?php
 
         require("requires/navbar.php"); // insert navbar
@@ -31,7 +30,6 @@ require("requires/connect.php");
             echo "<p> No Devices in the Database. </p>";
         }else
         {
-
             // Devices table
             echo "<table class='table'>";
                 echo "<thead>";
@@ -80,15 +78,11 @@ require("requires/connect.php");
                                     }
                                 echo "</td>";
                             echo "</tr>";
-                            
                         }
-
                 echo "</tbody>";
             echo "</table>";
         }
-
         ?>
-
     </div>
 </body>
 

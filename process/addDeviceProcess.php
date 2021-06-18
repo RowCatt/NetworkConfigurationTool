@@ -32,16 +32,16 @@ if(mysqli_num_rows($query) > 0){
 
 // Send this data to python to add the device
 exec("python3 /var/www/html/NetworkConfigurationTool/process/python/addDevice.py '$ip' '$username' '$password' '$model'", $output);
-// print_r($output);
-// var_dump($output);
-// $code = $output[0];
-// $message = $output[1];
-// echo "Code: $code";
-// echo "<br>";
-// echo "Message: $message";
-// ADD ERROR CODE FUNCTIONALITY
 
-// Return to device list
-header("Location: ../devices.php");
+$code = $output[0];
+$message = $output[1];
+
+if($code == "ERROR"){
+    header("Location: ../add_device.php?error=$message");
+}else{
+    // Return to device list
+    header("Location: ../devices.php");
+}
+
 
 ?>

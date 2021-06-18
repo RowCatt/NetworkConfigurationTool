@@ -1,5 +1,5 @@
 <?php
-$page_name = "View Configuration"; // Set page name
+$page_name = "View Configuration";
 require("requires/header.php");
 require("requires/connect.php");
 $config_id = $_GET["id"];

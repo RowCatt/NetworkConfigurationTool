@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# import nmap3
 import json
 import sys
 import ipaddress
@@ -23,8 +22,6 @@ localdb_cursor = localdb.cursor() # Used to interact with the DB
 
 # Collect arguments (device details from PHP)
 config_id = sys.argv[1]
-
-# print(f"config id: {config_id}")
 
 # Get config from DB
 localdb_fetch = f"SELECT * FROM configurations WHERE id='{config_id}' LIMIT 1"
@@ -56,7 +53,6 @@ device = {
     'secret':        device_password,
 }
 
-# RE-ADD LATER. REMOVED FOR TESTING
 try:
     connect = ConnectHandler(**device) # Connect to device
 except Exception as error: # If there's an error (device not reachable, wrong credentials)
@@ -71,9 +67,6 @@ except Exception as error: # If there's an error (device not reachable, wrong cr
 file = open("temp.txt", "w") 
 file.write(config_config)
 file.close()
-
-# file = open("temp.txt", "r")
-# print(file.read())
 
 connect.enable() # Jump to enable mode
 # Write rollback config

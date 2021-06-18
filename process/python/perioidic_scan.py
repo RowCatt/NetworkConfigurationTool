@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# import nmap3
 import json
 from os import name
 import sys
@@ -62,7 +61,6 @@ for device in localdb_data:
 
     print(f"Attempting connection to {device_ip_address}")
 
-    # ADD BACK LATER
     try:
         connect = ConnectHandler(**netmiko_connect) # Connect to device
         connect.enable()
@@ -92,16 +90,12 @@ for device in localdb_data:
             connect = ConnectHandler(**netmiko_connect)
             connect.enable()
             print("Connection successful")
-            # except Exception as error:
         except:
             print("Connection failed")
             localdb_update = f"UPDATE devices SET online='0' WHERE id='{device_id}'"
             localdb_cursor.execute(localdb_update)
             localdb.commit()
             continue
-
-    # connect.disconnect()
-    # connect = ConnectHandler(**netmiko_connect)
 
     # Set oneline=1 and last_online=now
     print("Setting online and last_online")
@@ -120,12 +114,6 @@ for device in localdb_data:
         current_username = current_username.split("username ", 1)
         current_username = current_username[1].split("password")[0]
         print(current_username)
-
-        # print("Finding current domain-name")
-        # current_domain_name = running_config
-        # current_domain_name = current_domain_name.split("domain-name ", 1)
-        # current_domain_name = current_domain_name[1].split("\n")[0]
-        # print(current_domain_name)
 
         current_domain_name = running_config
         try:
@@ -190,7 +178,6 @@ for device in localdb_data:
     else:
         # Check if running config is different to device table config, if so, change
 
-        # UNCOMMENT AFTER TESTING
         connect.enable()
         running_config = connect.send_command('show run')
 
@@ -201,14 +188,7 @@ for device in localdb_data:
         current_username = current_username[1].split("password")[0]
         print(current_username)
 
-        # print("Finding current domain-name")
-        # current_domain_name = running_config
-        # current_domain_name = current_domain_name.split("domain-name ", 1)
-        # current_domain_name = current_domain_name[1].split("\n")[0]
-        # print(current_domain_name)
-
         current_domain_name = running_config
-        # print(current_domain_name)
         try:
             current_domain_name = current_domain_name.split("domain name ", 1)
             current_domain_name = current_domain_name[1].split("\n")[0]
@@ -248,7 +228,3 @@ for device in localdb_data:
 
 
     print(f"Device {device_ip_address} done")
-
-
-
-print("End")

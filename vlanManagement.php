@@ -1,25 +1,17 @@
 <?php
 
-$page_name = "VLAN Mangement"; // Set page name
-// Insert header
+$page_name = "VLAN Mangement";
 require("requires/header.php");
 
-// Add databse connection info
 require("requires/connect.php");
 
 ?>
 
 <body>
-
     <div class="container">
-
-        <?php require("requires/navbar.php"); // insert navbar ?>
-
+        <?php require("requires/navbar.php"); ?>
         <div class='container' style="margin-top: 20px;">
-
             <h3> VLAN Management </h3>
-
-            <!-- <a class='btn btn-primary' href='addVlan.php'> Add VLAN </a> -->
             <form action='process/addVlan.php' method='post' style='width: 20%;'>
                 <p> Add new VLAN </p>
                 <div class="form-group">
@@ -32,7 +24,6 @@ require("requires/connect.php");
                 </div>
                 <button type="submit" class="btn btn-primary">Add VLAN</button>
             </form>
-
             <table class="table" style="margin-top: 20px;">
                 <thead>
                     <tr>
@@ -64,7 +55,6 @@ require("requires/connect.php");
 							echo "<tr>";
 								echo "<td> $vlan_number </td>";
 								echo "<td> $vlan_name </td>";
-								// echo "<td> <a class='btn btn-primary' href='renameVlan.php?id=$vlan_id'> Rename </a> </td>";
 								echo "<td>";
 									echo "<form action='process/renameVlan.php' method='post'>";
 										echo "<input style='width: 30%;' type='text' name='name' id='name'>";
@@ -80,11 +70,6 @@ require("requires/connect.php");
                 </tbody>
             </table>
         </div>
-
     </div>
 </body>
-
-<?php
-// Include footer
-require("requires/footer.php");
-?>
+<?php require("requires/footer.php"); ?>

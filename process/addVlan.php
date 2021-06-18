@@ -1,6 +1,8 @@
 <?php
 require("../requires/connect.php");
 
+// ERROR CHECKING
+
 if(isset($_POST["id"]) && $_POST["id"] != "" && isset($_POST["name"]) && $_POST["name"] != ""){
     $id = $_POST["id"];
     $name = $_POST["name"];
